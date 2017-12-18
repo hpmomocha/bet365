@@ -1,9 +1,9 @@
-source C:/Git/repository/bet365/DB_Script/01_TABLE/C_T_F_M_GLOBAL_MATCH.sql;
+source C:/Git/repository/bet365/DB_Script/01_TABLE/C_T_M_GLOBAL_MATCH.sql;
+source C:/Git/repository/bet365/DB_Script/01_TABLE/C_T_M_MATCH_CATEGORY.sql;
 source C:/Git/repository/bet365/DB_Script/01_TABLE/C_T_M_EARLY_STAGE_BET_TYPE.sql;
 source C:/Git/repository/bet365/DB_Script/01_TABLE/C_T_M_MATCH_SEASON.sql;
-source C:/Git/repository/bet365/DB_Script/01_TABLE/C_T_F_M_MATCH_COUNTRY.sql;
-source C:/Git/repository/bet365/DB_Script/01_TABLE/C_T_F_M_BET_TGT_MATCH.sql;
-source C:/Git/repository/bet365/DB_Script/01_TABLE/C_T_F_M_MATCH_TEAM.sql;
-source C:/Git/repository/bet365/DB_Script/01_TABLE/C_T_F_M_MATCH_CUP_TEAM.sql
+source C:/Git/repository/bet365/DB_Script/01_TABLE/C_T_M_MATCH_COUNTRY.sql;
+source C:/Git/repository/bet365/DB_Script/01_TABLE/C_T_M_BET_TGT_MATCH.sql;
+source C:/Git/repository/bet365/DB_Script/01_TABLE/C_T_M_MATCH_TEAM.sql;
 source C:/Git/repository/bet365/DB_Script/01_TABLE/C_T_ORDER.sql;
 source C:/Git/repository/bet365/DB_Script/01_TABLE/C_T_ORDER_DETAIL.sql;
