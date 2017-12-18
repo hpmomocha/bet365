@@ -22,3 +22,9 @@ INSERT INTO `bet365`.`t_f_m_bet_tgt_match`(`match_id`, `match_name`, `match_shor
 INSERT INTO `bet365`.`t_f_m_bet_tgt_match`(`match_id`, `match_name`, `match_short_name`, `match_belongs_in_cy_id`, `match_ssn_id`) VALUES(200, '苏格兰超级联赛', '苏超', 16, 1);
 INSERT INTO `bet365`.`t_f_m_bet_tgt_match`(`match_id`, `match_name`, `match_short_name`, `match_belongs_in_cy_id`, `match_ssn_id`) VALUES(210, '土耳其超级联赛', '土超', 17, 1);
 INSERT INTO `bet365`.`t_f_m_bet_tgt_match`(`match_id`, `match_name`, `match_short_name`, `match_belongs_in_cy_id`, `match_ssn_id`) VALUES(220, '希腊超级联赛', '希腊超', 18, 1);
+INSERT INTO `bet365`.`t_f_m_bet_tgt_match`(`match_id`, `match_name`, `match_short_name`, `match_belongs_in_cy_id`, `match_ssn_id`, `match_crrt_stage`) VALUES(1000, '世界杯', '世界杯', 100, 3, '32强');
+INSERT INTO `bet365`.`t_f_m_bet_tgt_match`(`match_id`, `match_name`, `match_short_name`, `match_belongs_in_cy_id`, `match_ssn_id`, `match_crrt_stage`) VALUES(2000, '欧洲冠军联赛', '欧冠', 200, 1, '16强');
+INSERT INTO `bet365`.`t_f_m_bet_tgt_match`(`match_id`, `match_name`, `match_short_name`, `match_belongs_in_cy_id`, `match_ssn_id`, `match_crrt_stage`) VALUES(2001, '欧洲联赛', '欧联', 200, 1, '32强');
+INSERT INTO `bet365`.`t_f_m_bet_tgt_match`(`match_id`, `match_name`, `match_short_name`, `match_belongs_in_cy_id`, `match_ssn_id`) VALUES(3000, '南美解放者杯赛', '解放者杯', 300, 2);
+INSERT INTO `bet365`.`t_f_m_bet_tgt_match`(`match_id`, `match_name`, `match_short_name`, `match_belongs_in_cy_id`, `match_ssn_id`) VALUES(3001, '南美俱乐部杯赛', '南俱杯', 300, 2);
+INSERT INTO `bet365`.`t_f_m_bet_tgt_match`(`match_id`, `match_name`, `match_short_name`, `match_belongs_in_cy_id`, `match_ssn_id`, `match_crrt_stage`) VALUES(4000, '亚洲冠军联赛', '亚冠', 400, 2, '冠军');

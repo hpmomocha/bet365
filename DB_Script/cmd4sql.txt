@@ -1,1 +1,1 @@
-source D:/work/github-repositories/bet365/DB_Script/bet365.sql;
+source C:/Git/repository/bet365/DB_Script/bet365.sql;

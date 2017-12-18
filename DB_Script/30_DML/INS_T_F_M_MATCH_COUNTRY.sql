@@ -16,3 +16,7 @@ INSERT INTO `bet365`.`t_f_m_match_country`(`match_cy_id`, `match_cy_name`, `cy_b
 INSERT INTO `bet365`.`t_f_m_match_country`(`match_cy_id`, `match_cy_name`, `cy_belongs_in_gbl_match_id`, `cy_show_order`) VALUES(16, '苏格兰', 2, 16);
 INSERT INTO `bet365`.`t_f_m_match_country`(`match_cy_id`, `match_cy_name`, `cy_belongs_in_gbl_match_id`, `cy_show_order`) VALUES(17, '土耳其', 2, 17);
 INSERT INTO `bet365`.`t_f_m_match_country`(`match_cy_id`, `match_cy_name`, `cy_belongs_in_gbl_match_id`, `cy_show_order`) VALUES(18, '希腊', 2, 18);
+INSERT INTO `bet365`.`t_f_m_match_country`(`match_cy_id`, `match_cy_name`, `cy_belongs_in_gbl_match_id`, `cy_show_order`) VALUES(100, '国际', 1, 100);
+INSERT INTO `bet365`.`t_f_m_match_country`(`match_cy_id`, `match_cy_name`, `cy_belongs_in_gbl_match_id`, `cy_show_order`) VALUES(200, '欧洲', 2, 200);
+INSERT INTO `bet365`.`t_f_m_match_country`(`match_cy_id`, `match_cy_name`, `cy_belongs_in_gbl_match_id`, `cy_show_order`) VALUES(300, '美洲', 3, 300);
+INSERT INTO `bet365`.`t_f_m_match_country`(`match_cy_id`, `match_cy_name`, `cy_belongs_in_gbl_match_id`, `cy_show_order`) VALUES(400, '亚洲', 4, 400);
