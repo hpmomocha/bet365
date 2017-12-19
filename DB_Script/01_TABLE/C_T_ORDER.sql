@@ -6,5 +6,6 @@ CREATE TABLE `t_order` (
   `is_win` tinyint(4) DEFAULT NULL COMMENT '是否中奖',
   `is_closed` tinyint(4) DEFAULT NULL COMMENT '是否结算完成',
   `is_closed_manually` tinyint(4) DEFAULT NULL COMMENT '是否手动完成结算',
+  `order_date` date NOT NULL COMMENT '投注日期',
   PRIMARY KEY (`order_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
