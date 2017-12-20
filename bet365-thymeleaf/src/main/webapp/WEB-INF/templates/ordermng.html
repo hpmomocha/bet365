@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <title th:text="#{lable.order.mng.title}">投注单管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all" href="../../css/bet365.css" th:href="@{/css/stsm.css}"/>
+  </head>
+  <body>
+  	<div>
+  		<h2 th:text="#{label.order.new}">新增投注</h2>
+  		<form action="#" th:action="@{/ordermng}" method="post">
+  			<fieldset>
+  				<legend th:text="#{label.order.info}">投注单信息</legend>
+  			</fieldset>
+  		</form>
+  	</div>
+  </body>
+</html>
