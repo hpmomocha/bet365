@@ -25,8 +25,8 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import com.hpe.kevin.business.SpringBusinessConfig;
+import com.hpe.kevin.business.jpa.SpringDataJpaConfig;
 import com.hpe.kevin.web.SpringWebConfig;
-
 
 public class Bet365WebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -44,7 +44,7 @@ public class Bet365WebApplicationInitializer extends AbstractAnnotationConfigDis
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[] { SpringBusinessConfig.class };
+        return new Class<?>[] { SpringBusinessConfig.class, SpringDataJpaConfig.class };
     }
 
     @Override
