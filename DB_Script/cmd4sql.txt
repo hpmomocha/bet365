@@ -1,1 +1,4 @@
+# office
 source C:/Git/repository/bet365/DB_Script/bet365.sql;
+# home
+source D:/work/github-repositories/bet365/DB_Script/bet365_HOME.sql;

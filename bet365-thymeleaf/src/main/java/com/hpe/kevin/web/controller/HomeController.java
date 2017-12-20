@@ -27,12 +27,12 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-//    @ModelAttribute("allGlobalMatch")
-//    public List<TMGlobalMatch> populateGlobalMatch() {
-//    	List<TMGlobalMatch> result = masterDataService.getAllGlobalMatch();
-//    	logger.info("全球赛事数=", result.size());
-//        return result;
-//    }
+    @ModelAttribute("allGlobalMatch")
+    public List<TMGlobalMatch> populateGlobalMatch() {
+    	List<TMGlobalMatch> result = masterDataService.getAllGlobalMatch();
+    	logger.info("全球赛事数={}", result.size());
+        return result;
+    }
     
 	/**
 	 * Simply selects the home view to render by returning its name.
