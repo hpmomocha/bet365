@@ -6,6 +6,10 @@ package com.hpe.kevin.business.entities;
  */
 public class TOrderDetailId implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1876458507538719596L;
 	private int orderId;
 	private int orderDetailId;
 

@@ -6,6 +6,10 @@ package com.hpe.kevin.business.entities;
  */
 public class TMMatchTeamId implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9179827386526669284L;
 	private int teamId;
 	private int matchId;
 

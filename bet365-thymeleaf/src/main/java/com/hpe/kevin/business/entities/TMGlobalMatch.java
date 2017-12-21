@@ -24,7 +24,6 @@ public class TMGlobalMatch implements java.io.Serializable {
 	
 	@Column(name="gbl_match_name")
 	private String gblMatchName;
-//	private Set TMMatchCountries = new HashSet(0);
 
 	public TMGlobalMatch() {
 	}
@@ -33,12 +32,6 @@ public class TMGlobalMatch implements java.io.Serializable {
 		this.id = id;
 		this.gblMatchName = gblMatchName;
 	}
-
-//	public TMGlobalMatch(int id, String gblMatchName, Set TMMatchCountries) {
-//		this.id = id;
-//		this.gblMatchName = gblMatchName;
-//		this.TMMatchCountries = TMMatchCountries;
-//	}
 
 	public int getId() {
 		return this.id;
@@ -55,13 +48,5 @@ public class TMGlobalMatch implements java.io.Serializable {
 	public void setGblMatchName(String gblMatchName) {
 		this.gblMatchName = gblMatchName;
 	}
-
-//	public Set getTMMatchCountries() {
-//		return this.TMMatchCountries;
-//	}
-//
-//	public void setTMMatchCountries(Set TMMatchCountries) {
-//		this.TMMatchCountries = TMMatchCountries;
-//	}
 
 }

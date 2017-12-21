@@ -2,19 +2,80 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 
-  <head>
-    <title th:text="#{lable.order.mng.title}">投注单管理</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" type="text/css" media="all" href="../../css/bet365.css" th:href="@{/css/stsm.css}"/>
-  </head>
-  <body>
-  	<div>
-  		<h2 th:text="#{label.order.new}">新增投注</h2>
-  		<form action="#" th:action="@{/ordermng}" method="post">
-  			<fieldset>
-  				<legend th:text="#{label.order.info}">投注单信息</legend>
-  			</fieldset>
-  		</form>
-  	</div>
-  </body>
+<head>
+<title th:text="#{lable.order.mng.title}">投注单管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all"
+	href="../../css/bet365.css" th:href="@{/css/bet365.css}" />
+</head>
+<body>
+	<div>
+		<h2 th:text="#{label.order.new}">新增投注</h2>
+		<form action="#" th:action="@{/saveOrder}" th:object="${tOrder}"
+			method="post">
+			<fieldset>
+				<legend th:text="#{label.order.info}">投注单信息</legend>
+
+				<div>
+					<label for="orderDate"> <span th:text="#{label.order.date}">投注日期</span>
+						(<span th:text="#{label.order.date.format}">YYYY/MM/DD</span>)
+					</label> <input type="text" th:field="*{orderDate}"
+						th:errorclass="fieldError" />
+				</div>
+				<div>
+					<label for="betTgtMatches"> <span>过关方式</span> (<span>X串Y</span>)
+					</label> <input type="text" th:field="*{betTgtMatches}"
+						th:errorclass="fieldError" />
+				</div>
+				<div>
+					<label for="orderPrpl"> <span>投注本金</span>
+					</label> <input type="text" th:field="*{orderPrpl}"
+						th:errorclass="fieldError" /> (<span>元</span>)
+				</div>
+				<div>
+					<label for="estmBonus"> <span>预计返奖</span>
+					</label> <input type="text" th:field="*{estmBonus}"
+						th:errorclass="fieldError" /> (<span>元</span>)
+				</div>
+
+				<div>
+					<label>投注单详情</label>
+					<table>
+						<thead>
+							<tr>
+								<th>No.</th>
+								<th>投注赛事</th>
+								<th>投注对象</th>
+								<th>投注内容</th>
+								<th>赔率</th>
+								<th><button type="submit" name="addRow">增加</button>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+						<!-- 
+							<tr th:each="row,rowStat : *{orderDetailList}">
+								<td th:text="${rowStat.count}">1</td>
+								<td><select
+									th:field="*{rows[__${rowStat.index}__].variety}">
+										<option th:each="var : ${allVarieties}" th:value="${var.id}"
+											th:text="${var.name}">Thymus Thymi</option>
+								</select></td>
+								<td><input type="text"
+									th:field="*{rows[__${rowStat.index}__].seedsPerCell}"
+									th:errorclass="fieldError" /></td>
+								<td>
+									<button type="submit" name="removeRow"
+										th:value="${rowStat.index}"
+										th:text="#{seedstarter.row.remove}">Remove row</button>
+								</td>
+							</tr>
+							 -->
+						</tbody>
+					</table>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</body>
 </html>
