@@ -5,7 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -23,24 +23,22 @@ public class TOrderDetail implements java.io.Serializable {
 	@EmbeddedId
 	private TOrderDetailId id;
 	
-	@ManyToOne
-	@JoinColumn(name = "match_id")
+	@OneToOne
+	@JoinColumn(name = "bet_tgt_match_id")
 	private TMBetTgtMatch TMBetTgtMatch;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "bet_type_id")
 	private TMEarlyStageBetType TMEarlyStageBetType;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "match_ssn_id")
 	private TMMatchSeason TMMatchSeason;
 	
-//	@ManyToOne
-//	@JoinColumns({
-//				@JoinColumn(name="teamId", referencedColumnName="team_id"),
-//				@JoinColumn(name="matchId", referencedColumnName="match_id")})
-//	private TMMatchTeam TMMatchTeam;
-	
+//	@OneToOne
+//	@JoinColumn(name="bet_tgt_team_id")
+//	private TMMatchTeam tMMatchTeam;
+//	
 	@Column(name = "bet_tgt_team_id")
 	private int betTgtTeamId;
 	
@@ -53,18 +51,43 @@ public class TOrderDetail implements java.io.Serializable {
 	public TOrderDetail() {
 	}
 
-	public TOrderDetail(TOrderDetailId id, TMBetTgtMatch TMBetTgtMatch, TMEarlyStageBetType TMEarlyStageBetType,
-			TMMatchSeason TMMatchSeason, 
-//			TMMatchTeam TMMatchTeam, 
-			double returnRate, Byte isClosed) {
+	public TOrderDetail(TOrderDetailId id, com.hpe.kevin.business.entities.TMBetTgtMatch tMBetTgtMatch,
+			com.hpe.kevin.business.entities.TMEarlyStageBetType tMEarlyStageBetType,
+			com.hpe.kevin.business.entities.TMMatchSeason tMMatchSeason, int betTgtTeamId, double returnRate,
+			Byte isClosed) {
+		super();
 		this.id = id;
-		this.TMBetTgtMatch = TMBetTgtMatch;
-		this.TMEarlyStageBetType = TMEarlyStageBetType;
-		this.TMMatchSeason = TMMatchSeason;
-//		this.TMMatchTeam = TMMatchTeam;
+		TMBetTgtMatch = tMBetTgtMatch;
+		TMEarlyStageBetType = tMEarlyStageBetType;
+		TMMatchSeason = tMMatchSeason;
+		this.betTgtTeamId = betTgtTeamId;
 		this.returnRate = returnRate;
 		this.isClosed = isClosed;
 	}
+//	public TOrderDetail(TOrderDetailId id, com.hpe.kevin.business.entities.TMBetTgtMatch tMBetTgtMatch,
+//			com.hpe.kevin.business.entities.TMEarlyStageBetType tMEarlyStageBetType,
+//			com.hpe.kevin.business.entities.TMMatchSeason tMMatchSeason, TMMatchTeam tMMatchTeam, double returnRate,
+//			Byte isClosed) {
+//		super();
+//		this.id = id;
+//		TMBetTgtMatch = tMBetTgtMatch;
+//		TMEarlyStageBetType = tMEarlyStageBetType;
+//		TMMatchSeason = tMMatchSeason;
+//		this.tMMatchTeam = tMMatchTeam;
+//		this.returnRate = returnRate;
+//		this.isClosed = isClosed;
+//	}
+
+
+//	public TMMatchTeam gettMMatchTeam() {
+//		return tMMatchTeam;
+//	}
+//
+//
+//	public void settMMatchTeam(TMMatchTeam tMMatchTeam) {
+//		this.tMMatchTeam = tMMatchTeam;
+//	}
+
 
 	public TOrderDetailId getId() {
 		return this.id;
@@ -122,12 +145,12 @@ public class TOrderDetail implements java.io.Serializable {
 		this.isClosed = isClosed;
 	}
 
-	public int getBetTgtTeamId() {
-		return betTgtTeamId;
-	}
-
-	public void setBetTgtTeamId(int betTgtTeamId) {
-		this.betTgtTeamId = betTgtTeamId;
-	}
+//	public int getBetTgtTeamId() {
+//		return betTgtTeamId;
+//	}
+//
+//	public void setBetTgtTeamId(int betTgtTeamId) {
+//		this.betTgtTeamId = betTgtTeamId;
+//	}
 
 }

@@ -1,0 +1,1 @@
+INSERT INTO `bet365`.`t_user`(`user_id`, `user_name`) VALUES(1, 'hpmomocha');

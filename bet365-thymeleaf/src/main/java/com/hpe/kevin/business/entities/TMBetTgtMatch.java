@@ -23,18 +23,17 @@ public class TMBetTgtMatch implements java.io.Serializable {
 	@Column(name="match_id")
 	private int matchId;
 	
-	//TMMatchCategory实体被TMBetTgtMatch实体引用了,该实体中用来关联的属性（外键）为：match_category_id
 	@OneToOne
-	@JoinColumn(name = "match_category_id")
+	@JoinColumn(name="match_category")
 	private TMMatchCategory tMMatchCategory;
 	
 	@OneToOne
-	@JoinColumn(name = "match_cy_id")
-	private TMMatchCountry TMMatchCountry;
+	@JoinColumn(name="match_belongs_in_cy_id")
+	private TMMatchCountry tMMatchCountry;
 	
 	@OneToOne
-	@JoinColumn(name = "match_ssn_id")
-	private TMMatchSeason TMMatchSeason;
+	@JoinColumn(name="match_ssn_id")
+	private TMMatchSeason tMMatchSeason;
 	
 	@Column(name = "match_name")
 	private String matchName;
@@ -48,12 +47,12 @@ public class TMBetTgtMatch implements java.io.Serializable {
 	public TMBetTgtMatch() {
 	}
 
-	public TMBetTgtMatch(int matchId, TMMatchCategory tMMatchCategory, TMMatchCountry TMMatchCountry,
-			TMMatchSeason TMMatchSeason, String matchName, String matchShortName, String matchCrrtStage) {
+	public TMBetTgtMatch(int matchId, TMMatchCategory tMMatchCategory, TMMatchCountry tMMatchCountry,
+			TMMatchSeason tMMatchSeason, String matchName, String matchShortName, String matchCrrtStage) {
 		this.matchId = matchId;
 		this.tMMatchCategory = tMMatchCategory;
-		this.TMMatchCountry = TMMatchCountry;
-		this.TMMatchSeason = TMMatchSeason;
+		this.tMMatchCountry = tMMatchCountry;
+		this.tMMatchSeason = tMMatchSeason;
 		this.matchName = matchName;
 		this.matchShortName = matchShortName;
 		this.matchCrrtStage = matchCrrtStage;
@@ -76,19 +75,19 @@ public class TMBetTgtMatch implements java.io.Serializable {
 	}
 
 	public TMMatchCountry getTMMatchCountry() {
-		return this.TMMatchCountry;
+		return this.tMMatchCountry;
 	}
 
-	public void setTMMatchCountry(TMMatchCountry TMMatchCountry) {
-		this.TMMatchCountry = TMMatchCountry;
+	public void setTMMatchCountry(TMMatchCountry tMMatchCountry) {
+		this.tMMatchCountry = tMMatchCountry;
 	}
 
 	public TMMatchSeason getTMMatchSeason() {
-		return this.TMMatchSeason;
+		return this.tMMatchSeason;
 	}
 
-	public void setTMMatchSeason(TMMatchSeason TMMatchSeason) {
-		this.TMMatchSeason = TMMatchSeason;
+	public void setTMMatchSeason(TMMatchSeason tMMatchSeason) {
+		this.tMMatchSeason = tMMatchSeason;
 	}
 
 	public String getMatchName() {

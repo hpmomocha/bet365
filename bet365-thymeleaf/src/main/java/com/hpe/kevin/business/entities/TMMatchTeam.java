@@ -5,7 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -23,11 +23,11 @@ public class TMMatchTeam implements java.io.Serializable {
 	@EmbeddedId
 	private TMMatchTeamId id;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "match_id")
 	private TMBetTgtMatch TMBetTgtMatch;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "match_ssn_id")
 	private TMMatchSeason TMMatchSeason;
 	

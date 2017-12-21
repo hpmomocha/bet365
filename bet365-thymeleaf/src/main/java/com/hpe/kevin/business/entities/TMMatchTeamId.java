@@ -10,31 +10,31 @@ public class TMMatchTeamId implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 9179827386526669284L;
-	private int teamId;
-	private int matchId;
+	private int team_id;
+	private int match_id;
 
 	public TMMatchTeamId() {
 	}
 
-	public TMMatchTeamId(int teamId, int matchId) {
-		this.teamId = teamId;
-		this.matchId = matchId;
+	public TMMatchTeamId(int team_id, int match_id) {
+		this.team_id = team_id;
+		this.match_id = match_id;
 	}
 
-	public int getTeamId() {
-		return this.teamId;
+	public int getTeam_id() {
+		return team_id;
 	}
 
-	public void setTeamId(int teamId) {
-		this.teamId = teamId;
+	public void setTeam_id(int team_id) {
+		this.team_id = team_id;
 	}
 
-	public int getMatchId() {
-		return this.matchId;
+	public int getMatch_id() {
+		return match_id;
 	}
 
-	public void setMatchId(int matchId) {
-		this.matchId = matchId;
+	public void setMatch_id(int match_id) {
+		this.match_id = match_id;
 	}
 
 	public boolean equals(Object other) {
@@ -46,14 +46,14 @@ public class TMMatchTeamId implements java.io.Serializable {
 			return false;
 		TMMatchTeamId castOther = (TMMatchTeamId) other;
 
-		return (this.getTeamId() == castOther.getTeamId()) && (this.getMatchId() == castOther.getMatchId());
+		return (this.getTeam_id() == castOther.getTeam_id()) && (this.getMatch_id() == castOther.getMatch_id());
 	}
 
 	public int hashCode() {
 		int result = 17;
 
-		result = 37 * result + this.getTeamId();
-		result = 37 * result + this.getMatchId();
+		result = 37 * result + this.getTeam_id();
+		result = 37 * result + this.getMatch_id();
 		return result;
 	}
 

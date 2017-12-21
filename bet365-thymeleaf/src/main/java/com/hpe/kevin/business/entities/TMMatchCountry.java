@@ -5,7 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -24,9 +24,9 @@ public class TMMatchCountry implements java.io.Serializable {
 	@Column(name = "match_cy_id")
 	private int matchCyId;
 	
-	@ManyToOne
-	@JoinColumn(name = "id")
-	private TMGlobalMatch TMGlobalMatch;
+	@OneToOne
+	@JoinColumn(name = "cy_belongs_in_gbl_match_id")
+	private TMGlobalMatch tMGlobalMatch;
 	
 	@Column(name = "match_cy_name")
 	private String matchCyName;
@@ -37,9 +37,9 @@ public class TMMatchCountry implements java.io.Serializable {
 	public TMMatchCountry() {
 	}
 
-	public TMMatchCountry(int matchCyId, TMGlobalMatch TMGlobalMatch, String matchCyName, int cyShowOrder) {
+	public TMMatchCountry(int matchCyId, TMGlobalMatch tMGlobalMatch, String matchCyName, int cyShowOrder) {
 		this.matchCyId = matchCyId;
-		this.TMGlobalMatch = TMGlobalMatch;
+		this.tMGlobalMatch = tMGlobalMatch;
 		this.matchCyName = matchCyName;
 		this.cyShowOrder = cyShowOrder;
 	}
@@ -53,11 +53,11 @@ public class TMMatchCountry implements java.io.Serializable {
 	}
 
 	public TMGlobalMatch getTMGlobalMatch() {
-		return this.TMGlobalMatch;
+		return this.tMGlobalMatch;
 	}
 
-	public void setTMGlobalMatch(TMGlobalMatch TMGlobalMatch) {
-		this.TMGlobalMatch = TMGlobalMatch;
+	public void setTMGlobalMatch(TMGlobalMatch tMGlobalMatch) {
+		this.tMGlobalMatch = tMGlobalMatch;
 	}
 
 	public String getMatchCyName() {

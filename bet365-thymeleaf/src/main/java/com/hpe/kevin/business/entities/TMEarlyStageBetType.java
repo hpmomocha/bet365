@@ -5,7 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -24,9 +24,9 @@ public class TMEarlyStageBetType implements java.io.Serializable {
 	@Column(name = "bet_type_id")
 	private int betTypeId;
 	
-	@ManyToOne
-	@JoinColumn(name = "match_category_id")
-	private TMMatchCategory TMMatchCategory;
+	@OneToOne
+	@JoinColumn(name = "bet_type_category")
+	private TMMatchCategory tMMatchCategory;
 	
 	@Column(name = "bet_type_name")
 	private String betTypeName;
@@ -34,9 +34,9 @@ public class TMEarlyStageBetType implements java.io.Serializable {
 	public TMEarlyStageBetType() {
 	}
 
-	public TMEarlyStageBetType(int betTypeId, TMMatchCategory TMMatchCategory, String betTypeName) {
+	public TMEarlyStageBetType(int betTypeId, TMMatchCategory tMMatchCategory, String betTypeName) {
 		this.betTypeId = betTypeId;
-		this.TMMatchCategory = TMMatchCategory;
+		this.tMMatchCategory = tMMatchCategory;
 		this.betTypeName = betTypeName;
 	}
 
@@ -49,11 +49,11 @@ public class TMEarlyStageBetType implements java.io.Serializable {
 	}
 
 	public TMMatchCategory getTMMatchCategory() {
-		return this.TMMatchCategory;
+		return this.tMMatchCategory;
 	}
 
-	public void setTMMatchCategory(TMMatchCategory TMMatchCategory) {
-		this.TMMatchCategory = TMMatchCategory;
+	public void setTMMatchCategory(TMMatchCategory tMMatchCategory) {
+		this.tMMatchCategory = tMMatchCategory;
 	}
 
 	public String getBetTypeName() {

@@ -8,7 +8,9 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -48,18 +50,21 @@ public class TOrder implements java.io.Serializable {
 	@Column(name = "order_date")
 	private Date orderDate;
 	
+	@OneToOne
+	@JoinColumn(name="user_id")
+	private TUser user;
+	
 	@OneToMany
+	@JoinColumn(name="order_id")
 	private List<TOrderDetail> orderDetailList = new ArrayList<TOrderDetail>();
 
 	public TOrder() {
 	}
 
-	public TOrder(Date orderDate) {
-		this.orderDate = orderDate;
-	}
-
-	public TOrder(Double orderPrpl, String betTgtMatches, Double estmBonus, Byte isWin, Byte isClosed,
-			Byte isClosedManually, Date orderDate) {
+	public TOrder(Integer orderId, Double orderPrpl, String betTgtMatches, Double estmBonus, Byte isWin, Byte isClosed,
+			Byte isClosedManually, Date orderDate, TUser user, List<TOrderDetail> orderDetailList) {
+		super();
+		this.orderId = orderId;
 		this.orderPrpl = orderPrpl;
 		this.betTgtMatches = betTgtMatches;
 		this.estmBonus = estmBonus;
@@ -67,6 +72,8 @@ public class TOrder implements java.io.Serializable {
 		this.isClosed = isClosed;
 		this.isClosedManually = isClosedManually;
 		this.orderDate = orderDate;
+		this.user = user;
+		this.orderDetailList = orderDetailList;
 	}
 
 	public Integer getOrderId() {
@@ -139,5 +146,13 @@ public class TOrder implements java.io.Serializable {
 
 	public void setOrderDetailList(List<TOrderDetail> orderDetailList) {
 		this.orderDetailList = orderDetailList;
+	}
+	
+	public TUser getUser() {
+		return user;
+	}
+
+	public void setUser(TUser user) {
+		this.user = user;
 	}
 }
