@@ -11,8 +11,7 @@
 <body>
 	<div>
 		<h2 th:text="#{label.order.new}">新增投注</h2>
-		<form action="#" th:action="@{/saveOrder}" th:object="${tOrder}"
-			method="post">
+		<form action="#" th:action="@{/order}" th:object="${order2}" method="post">
 			<fieldset>
 				<legend th:text="#{label.order.info}">投注单信息</legend>
 
@@ -22,6 +21,7 @@
 					</label> <input type="text" th:field="*{orderDate}"
 						th:errorclass="fieldError" />
 				</div>
+				<!--
 				<div>
 					<label for="betTgtMatches"> <span>过关方式</span> (<span>X串Y</span>)
 					</label> <input type="text" th:field="*{betTgtMatches}"
@@ -38,29 +38,32 @@
 						th:errorclass="fieldError" /> (<span>元</span>)
 				</div>
 
+ 
 				<div>
 					<label>投注单详情</label>
 					<table>
 						<thead>
 							<tr>
 								<th>No.</th>
-								<th>投注赛事</th>
+								<th>赛事区域</th>
+								<th>赛事类型</th>
+								<th>赛事所属国/组织</th>
+								<th>赛事名称</th>
 								<th>投注对象</th>
-								<th>投注内容</th>
+								<th>投注类型</th>
 								<th>赔率</th>
 								<th><button type="submit" name="addRow">增加</button>
 								</th>
 							</tr>
 						</thead>
 						<tbody>
-						<!-- 
 							<tr th:each="row,rowStat : *{orderDetailList}">
 								<td th:text="${rowStat.count}">1</td>
-								<td><select
-									th:field="*{rows[__${rowStat.index}__].variety}">
-										<option th:each="var : ${allVarieties}" th:value="${var.id}"
-											th:text="${var.name}">Thymus Thymi</option>
+								<td colspan="8"><select>
+										<option th:each="var : ${allGlobalMatch}" th:value="${var.id}"
+											th:text="${var.gblMatchName}">全球赛事</option>
 								</select></td>
+								
 								<td><input type="text"
 									th:field="*{rows[__${rowStat.index}__].seedsPerCell}"
 									th:errorclass="fieldError" /></td>
@@ -69,11 +72,11 @@
 										th:value="${rowStat.index}"
 										th:text="#{seedstarter.row.remove}">Remove row</button>
 								</td>
+								 
 							</tr>
-							 -->
 						</tbody>
 					</table>
-				</div>
+				</div>-->
 			</fieldset>
 		</form>
 	</div>

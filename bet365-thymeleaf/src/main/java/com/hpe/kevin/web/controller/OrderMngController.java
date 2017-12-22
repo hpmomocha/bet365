@@ -6,13 +6,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hpe.kevin.business.entities.TMBetTgtMatch;
+import com.hpe.kevin.business.entities.TMEarlyStageBetType;
 import com.hpe.kevin.business.entities.TMGlobalMatch;
+import com.hpe.kevin.business.entities.TMMatchCountry;
 import com.hpe.kevin.business.entities.TOrder;
+import com.hpe.kevin.business.entities.TUser;
 import com.hpe.kevin.business.services.MasterDataService;
 
 @Controller
@@ -28,6 +30,24 @@ public class OrderMngController {
         return result;
     }
     
+    @ModelAttribute("allMatchCountry")
+    public List<TMMatchCountry> populateMatchCountry() {
+    	List<TMMatchCountry> result = masterDataService.getAllMatchCountry();
+        return result;
+    }
+    
+    @ModelAttribute("allBetTargetMatch")
+    public List<TMBetTgtMatch> populateBetTargetMatch() {
+    	List<TMBetTgtMatch> result = masterDataService.getAllBetTgtMatch();
+        return result;
+    }
+    
+    @ModelAttribute("allEarlyStageBetType")
+    public List<TMEarlyStageBetType> populateEarlyStageBetType() {
+    	List<TMEarlyStageBetType> result = masterDataService.getAllEarlyStageBetType();
+        return result;
+    }
+    
     /**
      * 取得所有投注对象赛事
      * @return
@@ -38,14 +58,21 @@ public class OrderMngController {
         return result;
     }
     
-	@RequestMapping(value = "/order")
-	public String addOrderInit(Model model) {
-		model.addAttribute("tOrder", new TOrder());
-		return "ordermng";
-	}
+    @RequestMapping({"/","/order"})
+    public String orderMngInit(final TOrder order) {
+    	order.setUser(new TUser(1, "hpmomocha"));
+//    	model.addAttribute("order", order);
+        return "ordermng";
+    }
 	
-//	@RequestMapping(value="/saveOrder")
-//	public String saveOrder(final TOrder tOrder, final BindingResult bindingResult, ModelMap model) {
+//    @RequestMapping(value="/order", params={"addRow"})
+//    public String addRow(final TOrder order, final BindingResult bindingResult) {
+//    	order.getOrderDetailList().add(new TOrderDetail());
+//        return "ordermng";
+//    }
+//	
+//	@RequestMapping(value="/order", params={"save"})
+//	public String saveOrder(final TOrder order, final BindingResult bindingResult, ModelMap model) {
 //		return "redirect:/ordermng";
 //	}
 }

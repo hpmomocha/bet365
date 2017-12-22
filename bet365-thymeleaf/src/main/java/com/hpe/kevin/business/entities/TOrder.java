@@ -55,7 +55,7 @@ public class TOrder implements java.io.Serializable {
 	private TUser user;
 	
 	@OneToMany
-	@JoinColumn(name="order_id")
+	@JoinColumn(name="order_id", insertable = false, updatable = false)
 	private List<TOrderDetail> orderDetailList = new ArrayList<TOrderDetail>();
 
 	public TOrder() {

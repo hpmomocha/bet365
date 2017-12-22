@@ -24,15 +24,15 @@ public class TMMatchCountry implements java.io.Serializable {
 	@Column(name = "match_cy_id")
 	private int matchCyId;
 	
-	@OneToOne
-	@JoinColumn(name = "cy_belongs_in_gbl_match_id")
-	private TMGlobalMatch tMGlobalMatch;
-	
 	@Column(name = "match_cy_name")
 	private String matchCyName;
 	
 	@Column(name = "cy_show_order")
 	private int cyShowOrder;
+	
+	@OneToOne
+	@JoinColumn(name = "cy_belongs_in_gbl_match_id")
+	private TMGlobalMatch tMGlobalMatch;
 
 	public TMMatchCountry() {
 	}

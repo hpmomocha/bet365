@@ -1,4 +1,7 @@
 package com.hpe.kevin.business.entities;
+
+import javax.persistence.Column;
+
 // Generated 2017/12/20 14:07:38 by Hibernate Tools 5.2.3.Final
 
 /**
@@ -10,7 +13,9 @@ public class TOrderDetailId implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1876458507538719596L;
+	@Column(name = "order_id")
 	private int orderId;
+	@Column(name = "order_detail_id")
 	private int orderDetailId;
 
 	public TOrderDetailId() {

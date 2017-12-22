@@ -44,6 +44,4 @@ public class TUser implements Serializable {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	
-	
 }

@@ -140,6 +140,10 @@
 					<port>9999</port>
 					<path>/${project.artifactId}</path>
 					<uriEncoding>UTF-8</uriEncoding>
+					 <systemProperties>
+					 	<JAVA_OPTS>-Xms256m -Xmx1024m -XX:+DisableExplicitGC -Dcom.sun.management.jmxremote -XX:PermSize=256m -XX:MaxPermSize=512m</JAVA_OPTS>
+					 	<MAVEN_OPTS>-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=9999</MAVEN_OPTS>
+					 </systemProperties>
 				</configuration>
 			</plugin>
 
