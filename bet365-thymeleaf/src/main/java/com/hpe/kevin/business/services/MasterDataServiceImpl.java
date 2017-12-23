@@ -8,10 +8,12 @@ import org.springframework.stereotype.Service;
 import com.hpe.kevin.business.entities.TMBetTgtMatch;
 import com.hpe.kevin.business.entities.TMEarlyStageBetType;
 import com.hpe.kevin.business.entities.TMGlobalMatch;
+import com.hpe.kevin.business.entities.TMMatchCategory;
 import com.hpe.kevin.business.entities.TMMatchCountry;
 import com.hpe.kevin.business.entities.repositories.BetTgtMatchRepository;
 import com.hpe.kevin.business.entities.repositories.EarlyStageBetTypeRepository;
 import com.hpe.kevin.business.entities.repositories.GlobalMatchRepository;
+import com.hpe.kevin.business.entities.repositories.MatchCategoryRepository;
 import com.hpe.kevin.business.entities.repositories.MatchCountryRepository;
 
 @Service
@@ -27,6 +29,9 @@ public class MasterDataServiceImpl implements MasterDataService {
 	
 	@Autowired
 	EarlyStageBetTypeRepository betTypeRepository;
+	
+	@Autowired
+	MatchCategoryRepository matchCategoryRepository;
 
 	@Override
 	public List<TMGlobalMatch> getAllGlobalMatch() {
@@ -46,5 +51,10 @@ public class MasterDataServiceImpl implements MasterDataService {
 	@Override
 	public List<TMMatchCountry> getAllMatchCountry() {
 		return matchCountryRepository.findAll();
+	}
+
+	@Override
+	public List<TMMatchCategory> getAllMatchCategory() {
+		return matchCategoryRepository.findAll();
 	}
 }

@@ -9,12 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.hpe.kevin.business.entities.BetOrder;
 import com.hpe.kevin.business.entities.TMBetTgtMatch;
 import com.hpe.kevin.business.entities.TMEarlyStageBetType;
 import com.hpe.kevin.business.entities.TMGlobalMatch;
+import com.hpe.kevin.business.entities.TMMatchCategory;
 import com.hpe.kevin.business.entities.TMMatchCountry;
-import com.hpe.kevin.business.entities.TOrder;
-import com.hpe.kevin.business.entities.TUser;
 import com.hpe.kevin.business.services.MasterDataService;
 
 @Controller
@@ -24,27 +24,23 @@ public class OrderMngController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(OrderMngController.class);
 	
+    /**
+     * 取得所有赛事区域
+     * @return
+     */
     @ModelAttribute("allGlobalMatch")
     public List<TMGlobalMatch> populateGlobalMatch() {
     	List<TMGlobalMatch> result = masterDataService.getAllGlobalMatch();
         return result;
     }
     
+    /**
+     * 取得所有赛事所属国/组织
+     * @return
+     */
     @ModelAttribute("allMatchCountry")
     public List<TMMatchCountry> populateMatchCountry() {
     	List<TMMatchCountry> result = masterDataService.getAllMatchCountry();
-        return result;
-    }
-    
-    @ModelAttribute("allBetTargetMatch")
-    public List<TMBetTgtMatch> populateBetTargetMatch() {
-    	List<TMBetTgtMatch> result = masterDataService.getAllBetTgtMatch();
-        return result;
-    }
-    
-    @ModelAttribute("allEarlyStageBetType")
-    public List<TMEarlyStageBetType> populateEarlyStageBetType() {
-    	List<TMEarlyStageBetType> result = masterDataService.getAllEarlyStageBetType();
         return result;
     }
     
@@ -52,19 +48,38 @@ public class OrderMngController {
      * 取得所有投注对象赛事
      * @return
      */
-    @ModelAttribute("allBetTgtMatch")
-    public List<TMBetTgtMatch> populateAllBetTgtMatch() {
+    @ModelAttribute("allBetTargetMatch")
+    public List<TMBetTgtMatch> populateBetTargetMatch() {
     	List<TMBetTgtMatch> result = masterDataService.getAllBetTgtMatch();
         return result;
     }
     
-    @RequestMapping({"/","/order"})
-    public String orderMngInit(final TOrder order) {
-    	order.setUser(new TUser(1, "hpmomocha"));
+    /**
+     * 取得所有早期投注类型
+     * @return
+     */
+    @ModelAttribute("allEarlyStageBetType")
+    public List<TMEarlyStageBetType> populateEarlyStageBetType() {
+    	List<TMEarlyStageBetType> result = masterDataService.getAllEarlyStageBetType();
+        return result;
+    }
+    
+    /**
+     * 取得所有早期投注类型
+     * @return
+     */
+    @ModelAttribute("allMatchCategory")
+    public List<TMMatchCategory> populateMatchCategory() {
+    	List<TMMatchCategory> result = masterDataService.getAllMatchCategory();
+        return result;
+    }
+    
+    @RequestMapping({"/","/orderinit"})
+    public String orderMngInit(final BetOrder betOrder) {
 //    	model.addAttribute("order", order);
         return "ordermng";
     }
-	
+    
 //    @RequestMapping(value="/order", params={"addRow"})
 //    public String addRow(final TOrder order, final BindingResult bindingResult) {
 //    	order.getOrderDetailList().add(new TOrderDetail());
