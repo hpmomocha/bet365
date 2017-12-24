@@ -26,15 +26,15 @@ public class TOrderDetail implements java.io.Serializable {
 	
 	@OneToOne
 	@JoinColumn(name = "bet_tgt_match_id")
-	private TMBetTgtMatch TMBetTgtMatch;
+	private TMBetTgtMatch tMBetTgtMatch;
 	
 	@OneToOne
 	@JoinColumn(name = "bet_type_id")
-	private TMEarlyStageBetType TMEarlyStageBetType;
+	private TMEarlyStageBetType tMEarlyStageBetType;
 	
 	@OneToOne
 	@JoinColumn(name = "match_ssn_id")
-	private TMMatchSeason TMMatchSeason;
+	private TMMatchSeason tMMatchSeason;
 	
 	@OneToOne
 	@JoinColumns(
@@ -73,9 +73,9 @@ public class TOrderDetail implements java.io.Serializable {
 			Byte isClosed) {
 		super();
 		this.id = id;
-		TMBetTgtMatch = tMBetTgtMatch;
-		TMEarlyStageBetType = tMEarlyStageBetType;
-		TMMatchSeason = tMMatchSeason;
+		this.tMBetTgtMatch = tMBetTgtMatch;
+		this.tMEarlyStageBetType = tMEarlyStageBetType;
+		this.tMMatchSeason = tMMatchSeason;
 		this.tMMatchTeam = tMMatchTeam;
 		this.returnRate = returnRate;
 		this.isClosed = isClosed;
@@ -100,27 +100,27 @@ public class TOrderDetail implements java.io.Serializable {
 	}
 
 	public TMBetTgtMatch getTMBetTgtMatch() {
-		return this.TMBetTgtMatch;
+		return this.tMBetTgtMatch;
 	}
 
-	public void setTMBetTgtMatch(TMBetTgtMatch TMBetTgtMatch) {
-		this.TMBetTgtMatch = TMBetTgtMatch;
+	public void setTMBetTgtMatch(TMBetTgtMatch tMBetTgtMatch) {
+		this.tMBetTgtMatch = tMBetTgtMatch;
 	}
 
 	public TMEarlyStageBetType getTMEarlyStageBetType() {
-		return this.TMEarlyStageBetType;
+		return this.tMEarlyStageBetType;
 	}
 
-	public void setTMEarlyStageBetType(TMEarlyStageBetType TMEarlyStageBetType) {
-		this.TMEarlyStageBetType = TMEarlyStageBetType;
+	public void setTMEarlyStageBetType(TMEarlyStageBetType tMEarlyStageBetType) {
+		this.tMEarlyStageBetType = tMEarlyStageBetType;
 	}
 
 	public TMMatchSeason getTMMatchSeason() {
-		return this.TMMatchSeason;
+		return this.tMMatchSeason;
 	}
 
-	public void setTMMatchSeason(TMMatchSeason TMMatchSeason) {
-		this.TMMatchSeason = TMMatchSeason;
+	public void setTMMatchSeason(TMMatchSeason tMMatchSeason) {
+		this.tMMatchSeason = tMMatchSeason;
 	}
 
 	public double getReturnRate() {
