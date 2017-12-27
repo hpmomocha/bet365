@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -14,6 +15,10 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
+
+import com.hpe.kevin.web.conversion.BetTgtMatchFormatter;
+import com.hpe.kevin.web.conversion.EarlyStageBetTypeFormatter;
+import com.hpe.kevin.web.conversion.MatchTeamFormatter;
 
 @Configuration
 @EnableWebMvc
@@ -56,6 +61,33 @@ public class SpringWebConfig implements WebMvcConfigurer, ApplicationContextAwar
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setBasename("Messages");
         return messageSource;
+    }
+    
+    /*
+     * Add formatter for class 
+     * {@link com.hpe.kevin.business.entities.TMBetTgtMatch}
+     */
+    @Override
+    public void addFormatters(final FormatterRegistry registry) {
+//        addFormatters(registry);
+        registry.addFormatter(betTgtMatchFormatter());
+        registry.addFormatter(earlyStageBetTypeFormatter());
+        registry.addFormatter(matchTeamFormatter());
+    }
+
+    @Bean
+    public BetTgtMatchFormatter betTgtMatchFormatter() {
+        return new BetTgtMatchFormatter();
+    }
+    
+    @Bean
+    public EarlyStageBetTypeFormatter earlyStageBetTypeFormatter() {
+        return new EarlyStageBetTypeFormatter();
+    }
+    
+    @Bean
+    public MatchTeamFormatter matchTeamFormatter() {
+        return new MatchTeamFormatter();
     }
     
     /* **************************************************************** */

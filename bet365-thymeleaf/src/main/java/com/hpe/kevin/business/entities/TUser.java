@@ -1,10 +1,14 @@
 package com.hpe.kevin.business.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +26,13 @@ public class TUser implements Serializable {
 	
 	@Column(name="user_name")
 	private String userName;
+	
+	@OneToMany(mappedBy="tUser", cascade = CascadeType.ALL)
+	// mappedBy indicates the entity is the inverse of the relationship.
+	private Set<TOrder> orders = new HashSet<TOrder>();
+
+	public TUser() {
+	}
 
 	public TUser(int userId, String userName) {
 		super();
@@ -44,4 +55,12 @@ public class TUser implements Serializable {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
+//	public Set<TOrder> getOrders() {
+//		return orders;
+//	}
+//
+//	public void setOrders(Set<TOrder> orders) {
+//		this.orders = orders;
+//	}
 }

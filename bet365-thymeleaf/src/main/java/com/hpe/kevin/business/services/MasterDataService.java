@@ -8,6 +8,7 @@ import com.hpe.kevin.business.entities.TMGlobalMatch;
 import com.hpe.kevin.business.entities.TMMatchCategory;
 import com.hpe.kevin.business.entities.TMMatchCountry;
 import com.hpe.kevin.business.entities.TMMatchTeam;
+import com.hpe.kevin.business.entities.TOrder;
 
 public interface MasterDataService {
 	public List<TMGlobalMatch> getAllGlobalMatch();
@@ -21,4 +22,6 @@ public interface MasterDataService {
 	public List<TMMatchCategory> getAllMatchCategory();
 	
 	public List<TMMatchTeam> getAllMatchTeam();
+	
+	public void saveOrder(TOrder order);
 }

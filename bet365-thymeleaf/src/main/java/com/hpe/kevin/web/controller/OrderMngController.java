@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,9 @@ import com.hpe.kevin.business.entities.TMGlobalMatch;
 import com.hpe.kevin.business.entities.TMMatchCategory;
 import com.hpe.kevin.business.entities.TMMatchCountry;
 import com.hpe.kevin.business.entities.TMMatchTeam;
+import com.hpe.kevin.business.entities.TOrder;
 import com.hpe.kevin.business.entities.TOrderDetail;
+import com.hpe.kevin.business.entities.TUser;
 import com.hpe.kevin.business.services.MasterDataService;
 
 @Controller
@@ -89,7 +92,7 @@ public class OrderMngController {
         return result;
     }
     
-    @RequestMapping({"/","/orderinit"})
+    @RequestMapping({"/","/order"})
     public String orderMngInit(final BetOrder betOrder) {
         return "ordermng";
     }
@@ -106,9 +109,34 @@ public class OrderMngController {
     	betOrder.getOrderDetailList().remove(rowId.intValue());
         return "ordermng";
     }
-//	
-//	@RequestMapping(value="/order", params={"save"})
-//	public String saveOrder(final TOrder order, final BindingResult bindingResult, ModelMap model) {
-//		return "redirect:/ordermng";
-//	}
+	
+	@RequestMapping(value="/order", params={"save"})
+	public String saveOrder(final BetOrder betOrder, final BindingResult bindingResult, final ModelMap model) {
+        if (bindingResult.hasErrors()) {
+            return "ordermng";
+        }
+        masterDataService.saveOrder(copyOrderInfo(betOrder));
+        model.clear();
+		return "redirect:/order";
+	}
+	
+	private TOrder copyOrderInfo(BetOrder betOrder) {
+		TOrder order = new TOrder();
+		
+		order.setOrderId(1);
+		// 投注本金
+		order.setOrderPrpl(betOrder.getOrderPrpl());
+		// 过关方式 (X串Y)
+		order.setBetTgtMatches(betOrder.getBetTgtMatches());
+		// 预计返奖
+		order.setEstmBonus(betOrder.getEstmBonus());
+		
+		order.setTUser(new TUser(1, "hpmomocha"));
+		for (TOrderDetail orderDetail: betOrder.getOrderDetailList()) {
+			order.getOrderDetails().add(orderDetail);
+		}
+		order.setOrderDate(betOrder.getOrderDate());
+		
+		return order;
+	}
 }

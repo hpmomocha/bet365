@@ -1,16 +1,19 @@
 package com.hpe.kevin.business.entities;
 // Generated 2017/12/20 14:07:38 by Hibernate Tools 5.2.3.Final
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -26,6 +29,7 @@ public class TOrder implements java.io.Serializable {
 	private static final long serialVersionUID = 6712854053684544350L;
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "order_id")
 	private Integer orderId;
 	
@@ -50,30 +54,15 @@ public class TOrder implements java.io.Serializable {
 	@Column(name = "order_date")
 	private Date orderDate;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="user_id")
-	private TUser user;
+	private TUser tUser;
 	
-	@OneToMany
-	@JoinColumn(name="order_id", insertable = false, updatable = false)
-	private List<TOrderDetail> orderDetailList = new ArrayList<TOrderDetail>();
+	@OneToMany(mappedBy="tOrder", cascade = CascadeType.ALL)
+	// mappedBy indicates the entity is the inverse of the relationship.
+	private Set<TOrderDetail> orderDetails = new HashSet<TOrderDetail>();
 
 	public TOrder() {
-	}
-
-	public TOrder(Integer orderId, Double orderPrpl, String betTgtMatches, Double estmBonus, Byte isWin, Byte isClosed,
-			Byte isClosedManually, Date orderDate, TUser user, List<TOrderDetail> orderDetailList) {
-		super();
-		this.orderId = orderId;
-		this.orderPrpl = orderPrpl;
-		this.betTgtMatches = betTgtMatches;
-		this.estmBonus = estmBonus;
-		this.isWin = isWin;
-		this.isClosed = isClosed;
-		this.isClosedManually = isClosedManually;
-		this.orderDate = orderDate;
-		this.user = user;
-		this.orderDetailList = orderDetailList;
 	}
 
 	public Integer getOrderId() {
@@ -140,19 +129,19 @@ public class TOrder implements java.io.Serializable {
 		this.orderDate = orderDate;
 	}
 
-	public List<TOrderDetail> getOrderDetailList() {
-		return orderDetailList;
+	public Set<TOrderDetail> getOrderDetails() {
+		return orderDetails;
 	}
 
-	public void setOrderDetailList(List<TOrderDetail> orderDetailList) {
-		this.orderDetailList = orderDetailList;
+	public void setOrderDetails(Set<TOrderDetail> orderDetails) {
+		this.orderDetails = orderDetails;
 	}
 	
-	public TUser getUser() {
-		return user;
+	public TUser getTUser() {
+		return tUser;
 	}
 
-	public void setUser(TUser user) {
-		this.user = user;
+	public void setTUser(TUser tUser) {
+		this.tUser = tUser;
 	}
 }

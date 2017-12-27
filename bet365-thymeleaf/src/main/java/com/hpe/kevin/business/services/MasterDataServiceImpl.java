@@ -11,12 +11,14 @@ import com.hpe.kevin.business.entities.TMGlobalMatch;
 import com.hpe.kevin.business.entities.TMMatchCategory;
 import com.hpe.kevin.business.entities.TMMatchCountry;
 import com.hpe.kevin.business.entities.TMMatchTeam;
+import com.hpe.kevin.business.entities.TOrder;
 import com.hpe.kevin.business.entities.repositories.BetTgtMatchRepository;
 import com.hpe.kevin.business.entities.repositories.EarlyStageBetTypeRepository;
 import com.hpe.kevin.business.entities.repositories.GlobalMatchRepository;
 import com.hpe.kevin.business.entities.repositories.MatchCategoryRepository;
 import com.hpe.kevin.business.entities.repositories.MatchCountryRepository;
 import com.hpe.kevin.business.entities.repositories.MatchTeamRepository;
+import com.hpe.kevin.business.entities.repositories.OrderRepository;
 
 @Service
 public class MasterDataServiceImpl implements MasterDataService {
@@ -37,6 +39,9 @@ public class MasterDataServiceImpl implements MasterDataService {
 	
 	@Autowired
 	MatchTeamRepository matchTeamRepository;
+	
+	@Autowired
+	OrderRepository orderRepository;
 
 	@Override
 	public List<TMGlobalMatch> getAllGlobalMatch() {
@@ -66,5 +71,10 @@ public class MasterDataServiceImpl implements MasterDataService {
 	@Override
 	public List<TMMatchTeam> getAllMatchTeam() {
 		return matchTeamRepository.findAll();
+	}
+
+	@Override
+	public void saveOrder(TOrder order) {
+		orderRepository.save(order);
 	}
 }

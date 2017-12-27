@@ -38,7 +38,6 @@
 						th:errorclass="fieldError" /> (<span>元</span>)
 				</div>
 
-
 				<div>
 					<label>投注单详情</label>
 					<table>
@@ -59,38 +58,49 @@
 						<tbody>
 							<tr th:each="row,rowStat : *{orderDetailList}">
 								<td th:text="${rowStat.count}">1</td>
-								<td><select th:field="*{orderDetailList[__${rowStat.index}__].globalMatch}">
+								<td><select
+									th:field="*{orderDetailList[__${rowStat.index}__].globalMatch}">
 										<option th:each="var : ${allGlobalMatch}" th:value="${var.id}"
 											th:text="${var.gblMatchName}">全球赛事</option>
 								</select></td>
-								<td><select th:field="*{orderDetailList[__${rowStat.index}__].matchCatetory}">
+								<td><select
+									th:field="*{orderDetailList[__${rowStat.index}__].matchCatetory}">
 										<option th:each="var : ${allMatchCategory}"
 											th:value="${var.matchCategoryId}"
 											th:text="${var.matchCategoryName}">赛事类型</option>
 								</select></td>
-								<td><select th:field="*{orderDetailList[__${rowStat.index}__].matchCountry}">
+								<td><select
+									th:field="*{orderDetailList[__${rowStat.index}__].matchCountry}">
 										<option th:each="var : ${allMatchCountry}"
 											th:value="${var.matchCyId}" th:text="${var.matchCyName}">赛事所属国/组织</option>
 								</select></td>
-								<td><select th:field="*{orderDetailList[__${rowStat.index}__].tMBetTgtMatch}">
+								<td><select
+									th:field="*{orderDetailList[__${rowStat.index}__].tMBetTgtMatch}">
 										<option th:each="var : ${allBetTargetMatch}"
 											th:value="${var.matchId}" th:text="${var.matchName}">赛事名称</option>
 								</select></td>
-								<td><select th:field="*{orderDetailList[__${rowStat.index}__].tMMatchTeam}">
+								<td><select
+									th:field="*{orderDetailList[__${rowStat.index}__].tMMatchTeam}">
 										<option th:each="var : ${allMatchTeam}"
 											th:value="${var.teamId}" th:text="${var.teamName}">投注球队</option>
 								</select></td>
-								<td><select th:field="*{orderDetailList[__${rowStat.index}__].tMEarlyStageBetType}">
+								<td><select
+									th:field="*{orderDetailList[__${rowStat.index}__].tMEarlyStageBetType}">
 										<option th:each="var : ${allEarlyStageBetType}"
 											th:value="${var.betTypeId}" th:text="${var.betTypeName}">投注类型</option>
 								</select></td>
-								<td><input type="text" th:field="*{orderDetailList[__${rowStat.index}__].returnRate}"
+								<td><input type="text"
+									th:field="*{orderDetailList[__${rowStat.index}__].returnRate}"
 									th:errorclass="fieldError" /></td>
 								<td><button type="submit" name="removeRow"
-										th:value="${rowStat.index}" >删除行</button></td>
+										th:value="${rowStat.index}">删除行</button></td>
 							</tr>
 						</tbody>
 					</table>
+				</div>
+
+				<div class="submit">
+					<button type="submit" name="save">确认投注</button>
 				</div>
 			</fieldset>
 		</form>

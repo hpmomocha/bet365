@@ -2,10 +2,12 @@ package com.hpe.kevin.business.entities;
 // Generated 2017/12/20 14:07:38 by Hibernate Tools 5.2.3.Final
 
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -22,8 +24,10 @@ public class TOrderDetail implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 3275613444242907126L;
 	
-	@EmbeddedId
-	private TOrderDetailId id;
+	@Id
+	@Column(name = "order_detail_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int orderDetailId;
 	
 	@OneToOne
 	@JoinColumn(name = "bet_tgt_match_id")
@@ -47,6 +51,12 @@ public class TOrderDetail implements java.io.Serializable {
 	@Column(name = "is_closed")
 	private Byte isClosed;
 	
+	@ManyToOne
+	@JoinColumn(name = "order_id")
+	// @JoinColumn indicates the entity is the owner of the relationship: 
+	// the corresponding table has a column with a foreign key to the referenced table. 
+	private TOrder tOrder;
+	
 	@Transient
 	// 赛事区域
 	private TMGlobalMatch globalMatch;
@@ -63,19 +73,6 @@ public class TOrderDetail implements java.io.Serializable {
 	public TOrderDetail() {
 	}
 
-	public TOrderDetail(TOrderDetailId id, com.hpe.kevin.business.entities.TMBetTgtMatch tMBetTgtMatch,
-			com.hpe.kevin.business.entities.TMEarlyStageBetType tMEarlyStageBetType,
-			com.hpe.kevin.business.entities.TMMatchSeason tMMatchSeason, TMMatchTeam tMMatchTeam, double returnRate,
-			Byte isClosed) {
-		super();
-		this.id = id;
-		this.tMBetTgtMatch = tMBetTgtMatch;
-		this.tMEarlyStageBetType = tMEarlyStageBetType;
-		this.tMMatchSeason = tMMatchSeason;
-		this.tMMatchTeam = tMMatchTeam;
-		this.returnRate = returnRate;
-		this.isClosed = isClosed;
-	}
 
 	public TMMatchTeam gettMMatchTeam() {
 		return tMMatchTeam;
@@ -84,15 +81,6 @@ public class TOrderDetail implements java.io.Serializable {
 
 	public void settMMatchTeam(TMMatchTeam tMMatchTeam) {
 		this.tMMatchTeam = tMMatchTeam;
-	}
-
-
-	public TOrderDetailId getId() {
-		return this.id;
-	}
-
-	public void setId(TOrderDetailId id) {
-		this.id = id;
 	}
 
 	public TMBetTgtMatch getTMBetTgtMatch() {
@@ -157,6 +145,23 @@ public class TOrderDetail implements java.io.Serializable {
 
 	public void setMatchCountry(TMMatchCountry matchCountry) {
 		this.matchCountry = matchCountry;
+	}
+
+
+	public int getOrderDetailId() {
+		return orderDetailId;
+	}
+
+	public void setOrderDetailId(int orderDetailId) {
+		this.orderDetailId = orderDetailId;
+	}
+
+	public TOrder getTOrder() {
+		return tOrder;
+	}
+
+	public void setTOrder(TOrder tOrder) {
+		this.tOrder = tOrder;
 	}
 
 }

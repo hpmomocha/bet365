@@ -40,6 +40,11 @@ public class TMEarlyStageBetType implements java.io.Serializable {
 		this.betTypeName = betTypeName;
 	}
 
+	public TMEarlyStageBetType(int betTypeId) {
+		super();
+		this.betTypeId = betTypeId;
+	}
+
 	public int getBetTypeId() {
 		return this.betTypeId;
 	}

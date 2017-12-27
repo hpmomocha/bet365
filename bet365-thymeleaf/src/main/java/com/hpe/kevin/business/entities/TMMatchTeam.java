@@ -50,6 +50,11 @@ public class TMMatchTeam implements java.io.Serializable {
 	public TMMatchTeam() {
 	}
 
+	public TMMatchTeam(int teamId) {
+		super();
+		this.teamId = teamId;
+	}
+
 	public TMMatchTeam(int teamId, TMBetTgtMatch TMBetTgtMatch, TMMatchSeason TMMatchSeason, String teamName,
 			String teamShortName, String matchGroup, String knktMatchRival, String teamStanding) {
 		this.teamId = teamId;
