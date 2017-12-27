@@ -1,6 +1,7 @@
 package com.hpe.kevin.business.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.hpe.kevin.business.entities.TMBetTgtMatch;
 import com.hpe.kevin.business.entities.TMEarlyStageBetType;
@@ -14,6 +15,8 @@ public interface MasterDataService {
 	public List<TMGlobalMatch> getAllGlobalMatch();
 	
 	public List<TMBetTgtMatch> getAllBetTgtMatch();
+	
+	public Optional<TMBetTgtMatch> findBetTgtMatchById(int matchId);
 	
 	public List<TMEarlyStageBetType> getAllEarlyStageBetType();
 	

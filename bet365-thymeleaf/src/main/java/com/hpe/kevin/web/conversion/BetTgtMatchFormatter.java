@@ -22,20 +22,25 @@ package com.hpe.kevin.web.conversion;
 import java.text.ParseException;
 import java.util.Locale;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.Formatter;
 
 import com.hpe.kevin.business.entities.TMBetTgtMatch;
+import com.hpe.kevin.business.services.MasterDataService;
 
 
 public class BetTgtMatchFormatter implements Formatter<TMBetTgtMatch> {
 
+	@Autowired
+	private MasterDataService masterDataService;
+	
     public BetTgtMatchFormatter() {
         super();
     }
 
     public TMBetTgtMatch parse(final String text, final Locale locale) throws ParseException {
         final Integer matchId = Integer.valueOf(text);
-        return new TMBetTgtMatch(matchId);
+        return masterDataService.findBetTgtMatchById(matchId).get();
     }
 
 

@@ -39,6 +39,12 @@ public class BetOrder implements java.io.Serializable{
 	private Double estmBonus;
 	// 投注单详情
 	private List<TOrderDetail> orderDetailList = new ArrayList<TOrderDetail>();
+	// 是否中奖
+	private Boolean isWin;
+	// 是否完成结算
+	private Boolean isClosed;
+	// 是否手动完成结算
+	private Boolean isClosedManually;
 	
 	public BetOrder() {
 		super();
@@ -76,5 +82,28 @@ public class BetOrder implements java.io.Serializable{
 	public void setOrderDetailList(List<TOrderDetail> orderDetailList) {
 		this.orderDetailList = orderDetailList;
 	}
-	
+
+	public Boolean getIsWin() {
+		return isWin;
+	}
+
+	public void setIsWin(Boolean isWin) {
+		this.isWin = isWin;
+	}
+
+	public Boolean getIsClosed() {
+		return isClosed;
+	}
+
+	public void setIsClosed(Boolean isClosed) {
+		this.isClosed = isClosed;
+	}
+
+	public Boolean getIsClosedManually() {
+		return isClosedManually;
+	}
+
+	public void setIsClosedManually(Boolean isClosedManually) {
+		this.isClosedManually = isClosedManually;
+	}
 }

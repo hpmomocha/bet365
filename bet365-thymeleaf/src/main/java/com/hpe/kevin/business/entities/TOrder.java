@@ -43,13 +43,13 @@ public class TOrder implements java.io.Serializable {
 	private Double estmBonus;
 	
 	@Column(name = "is_win")
-	private Byte isWin;
+	private String isWin;
 	
 	@Column(name = "is_closed")
-	private Byte isClosed;
+	private String isClosed;
 	
 	@Column(name = "is_closed_manually")
-	private Byte isClosedManually;
+	private String isClosedManually;
 	
 	@Column(name = "order_date")
 	private Date orderDate;
@@ -97,27 +97,27 @@ public class TOrder implements java.io.Serializable {
 		this.estmBonus = estmBonus;
 	}
 
-	public Byte getIsWin() {
+	public String getIsWin() {
 		return this.isWin;
 	}
 
-	public void setIsWin(Byte isWin) {
+	public void setIsWin(String isWin) {
 		this.isWin = isWin;
 	}
 
-	public Byte getIsClosed() {
+	public String getIsClosed() {
 		return this.isClosed;
 	}
 
-	public void setIsClosed(Byte isClosed) {
+	public void setIsClosed(String isClosed) {
 		this.isClosed = isClosed;
 	}
 
-	public Byte getIsClosedManually() {
+	public String getIsClosedManually() {
 		return this.isClosedManually;
 	}
 
-	public void setIsClosedManually(Byte isClosedManually) {
+	public void setIsClosedManually(String isClosedManually) {
 		this.isClosedManually = isClosedManually;
 	}
 

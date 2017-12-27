@@ -49,7 +49,7 @@ public class TOrderDetail implements java.io.Serializable {
 	private double returnRate;
 	
 	@Column(name = "is_closed")
-	private Byte isClosed;
+	private String isClosed;
 	
 	@ManyToOne
 	@JoinColumn(name = "order_id")
@@ -115,11 +115,11 @@ public class TOrderDetail implements java.io.Serializable {
 		this.returnRate = returnRate;
 	}
 
-	public Byte getIsClosed() {
+	public String getIsClosed() {
 		return this.isClosed;
 	}
 
-	public void setIsClosed(Byte isClosed) {
+	public void setIsClosed(String isClosed) {
 		this.isClosed = isClosed;
 	}
 

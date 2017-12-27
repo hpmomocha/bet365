@@ -1,6 +1,7 @@
 package com.hpe.kevin.business.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -76,5 +77,10 @@ public class MasterDataServiceImpl implements MasterDataService {
 	@Override
 	public void saveOrder(TOrder order) {
 		orderRepository.save(order);
+	}
+	
+	@Override
+	public Optional<TMBetTgtMatch> findBetTgtMatchById(int matchId) {
+		return betTgtMatchRepository.findById(matchId);
 	}
 }

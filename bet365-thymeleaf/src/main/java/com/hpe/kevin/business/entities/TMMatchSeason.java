@@ -28,6 +28,11 @@ public class TMMatchSeason implements java.io.Serializable {
 	public TMMatchSeason() {
 	}
 
+	public TMMatchSeason(int matchSsnId) {
+		super();
+		this.matchSsnId = matchSsnId;
+	}
+
 	public TMMatchSeason(int matchSsnId, String matchSsnName) {
 		this.matchSsnId = matchSsnId;
 		this.matchSsnName = matchSsnName;

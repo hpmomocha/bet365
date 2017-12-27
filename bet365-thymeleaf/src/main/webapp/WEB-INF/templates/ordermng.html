@@ -37,7 +37,18 @@
 					</label> <input type="text" th:field="*{estmBonus}"
 						th:errorclass="fieldError" /> (<span>元</span>)
 				</div>
-
+				<div>
+					<label for="isClosed"> <span>结算济</span>
+					</label> <input type="checkbox" th:field="*{isClosed}" />
+				</div>
+				<div>
+					<label for="isClosedManually"> <span>手动结算济</span>
+					</label> <input type="checkbox" th:field="*{isClosedManually}" />
+				</div>
+				<div>
+					<label for="isWin"> <span>中奖</span>
+					</label> <input type="checkbox" th:field="*{isWin}" />
+				</div>
 				<div>
 					<label>投注单详情</label>
 					<table>
