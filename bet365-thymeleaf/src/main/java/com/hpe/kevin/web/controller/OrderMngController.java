@@ -2,6 +2,8 @@ package com.hpe.kevin.web.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,13 +91,19 @@ public class OrderMngController {
     
     @RequestMapping({"/","/orderinit"})
     public String orderMngInit(final BetOrder betOrder) {
-//    	model.addAttribute("order", order);
         return "ordermng";
     }
     
     @RequestMapping(value="/order", params={"addRow"})
     public String addRow(final BetOrder betOrder, final BindingResult bindingResult) {
     	betOrder.getOrderDetailList().add(new TOrderDetail());
+        return "ordermng";
+    }
+    
+    @RequestMapping(value="/order", params={"removeRow"})
+    public String removeRow(final BetOrder betOrder, final BindingResult bindingResult, final HttpServletRequest req) {
+    	final Integer rowId = Integer.valueOf(req.getParameter("removeRow"));
+    	betOrder.getOrderDetailList().remove(rowId.intValue());
         return "ordermng";
     }
 //	

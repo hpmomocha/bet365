@@ -59,16 +59,16 @@
 						<tbody>
 							<tr th:each="row,rowStat : *{orderDetailList}">
 								<td th:text="${rowStat.count}">1</td>
-								<td><select>
+								<td><select th:field="*{orderDetailList[__${rowStat.index}__].globalMatch}">
 										<option th:each="var : ${allGlobalMatch}" th:value="${var.id}"
 											th:text="${var.gblMatchName}">全球赛事</option>
 								</select></td>
-								<td><select>
+								<td><select th:field="*{orderDetailList[__${rowStat.index}__].matchCatetory}">
 										<option th:each="var : ${allMatchCategory}"
 											th:value="${var.matchCategoryId}"
 											th:text="${var.matchCategoryName}">赛事类型</option>
 								</select></td>
-								<td><select>
+								<td><select th:field="*{orderDetailList[__${rowStat.index}__].matchCountry}">
 										<option th:each="var : ${allMatchCountry}"
 											th:value="${var.matchCyId}" th:text="${var.matchCyName}">赛事所属国/组织</option>
 								</select></td>
