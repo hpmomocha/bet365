@@ -28,6 +28,11 @@ public class TMGlobalMatch implements java.io.Serializable {
 	public TMGlobalMatch() {
 	}
 
+	public TMGlobalMatch(int id) {
+		super();
+		this.id = id;
+	}
+
 	public TMGlobalMatch(int id, String gblMatchName) {
 		this.id = id;
 		this.gblMatchName = gblMatchName;

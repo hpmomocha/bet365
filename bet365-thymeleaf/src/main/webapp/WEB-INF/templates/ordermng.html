@@ -5,8 +5,34 @@
 <head>
 <title th:text="#{lable.order.mng.title}">投注单管理</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!--   <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>  -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" media="all"
 	href="../../css/bet365.css" th:href="@{/css/bet365.css}" />
+<script type="text/javascript">
+function changeGlobalMatch(obj) {
+	sendAjaxRequest(obj);
+}
+
+function sendAjaxRequest(obj) {
+	var ajaxData = {
+    		name : obj.value
+    	}
+    $.ajax({
+        type:"POST",
+        contentType:"application/json",
+        url:window.location + "/getMatchCountry",
+        data:JSON.stringify(ajaxData),
+        dateType:"json",
+        success: function (data) {
+            alert("success");
+        },
+        error: function (e) {
+        	alert("error");
+        }
+    });
+}
+</script>
 </head>
 <body>
 	<div>
@@ -49,19 +75,20 @@
 					<label for="isWin"> <span>中奖</span>
 					</label> <input type="checkbox" th:field="*{isWin}" />
 				</div>
-				<div>
-					<label>投注单详情</label>
+				<div><label>投注单详情</label></div>
+				<div align="center">
 					<table>
 						<thead>
 							<tr>
 								<th>No.</th>
 								<th>赛事区域</th>
-								<th>赛事类型</th>
+								<!-- <th>赛事类型</th>  -->
 								<th>赛事所属国/组织</th>
 								<th>赛事名称</th>
 								<th>投注球队</th>
 								<th>投注类型</th>
 								<th>赔率</th>
+								<th>结算济</th>
 								<th><button type="submit" name="addRow">增加</button></th>
 							</tr>
 						</thead>
@@ -70,16 +97,16 @@
 							<tr th:each="row,rowStat : *{orderDetailList}">
 								<td th:text="${rowStat.count}">1</td>
 								<td><select
-									th:field="*{orderDetailList[__${rowStat.index}__].globalMatch}">
+									th:field="*{orderDetailList[__${rowStat.index}__].globalMatch}" onchange='changeGlobalMatch(this)'>
 										<option th:each="var : ${allGlobalMatch}" th:value="${var.id}"
 											th:text="${var.gblMatchName}">全球赛事</option>
 								</select></td>
-								<td><select
+								<!-- <td><select
 									th:field="*{orderDetailList[__${rowStat.index}__].matchCatetory}">
 										<option th:each="var : ${allMatchCategory}"
 											th:value="${var.matchCategoryId}"
 											th:text="${var.matchCategoryName}">赛事类型</option>
-								</select></td>
+								</select></td> -->
 								<td><select
 									th:field="*{orderDetailList[__${rowStat.index}__].matchCountry}">
 										<option th:each="var : ${allMatchCountry}"
@@ -88,7 +115,7 @@
 								<td><select
 									th:field="*{orderDetailList[__${rowStat.index}__].tMBetTgtMatch}">
 										<option th:each="var : ${allBetTargetMatch}"
-											th:value="${var.matchId}" th:text="${var.matchName}">赛事名称</option>
+											th:value="${var.matchId}" th:text="${var.matchShortName}">赛事名称</option>
 								</select></td>
 								<td><select
 									th:field="*{orderDetailList[__${rowStat.index}__].tMMatchTeam}">
@@ -102,7 +129,9 @@
 								</select></td>
 								<td><input type="text"
 									th:field="*{orderDetailList[__${rowStat.index}__].returnRate}"
-									th:errorclass="fieldError" /></td>
+									th:errorclass="fieldError" size="5"/></td>
+								<td><input type="checkbox"
+									th:field="*{orderDetailList[__${rowStat.index}__].isClosedCheckbox}" /></td>
 								<td><button type="submit" name="removeRow"
 										th:value="${rowStat.index}">删除行</button></td>
 							</tr>

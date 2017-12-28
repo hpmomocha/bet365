@@ -20,7 +20,6 @@
 package com.hpe.kevin.business.entities;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class BetOrder implements java.io.Serializable{
@@ -30,7 +29,7 @@ public class BetOrder implements java.io.Serializable{
 	 */
 	private static final long serialVersionUID = 2292485125442960992L;
 	// 投注日期
-	private Date orderDate;
+	private String orderDate;
 	// 过关方式
 	private String betTgtMatches;
 	// 投注本金
@@ -50,10 +49,10 @@ public class BetOrder implements java.io.Serializable{
 		super();
 	}
 	
-	public Date getOrderDate() {
+	public String getOrderDate() {
 		return orderDate;
 	}
-	public void setOrderDate(Date orderDate) {
+	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
 	public String getBetTgtMatches() {

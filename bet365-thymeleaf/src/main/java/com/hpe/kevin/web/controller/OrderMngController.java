@@ -11,7 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hpe.kevin.business.entities.BetOrder;
 import com.hpe.kevin.business.entities.TMBetTgtMatch;
@@ -19,11 +22,8 @@ import com.hpe.kevin.business.entities.TMEarlyStageBetType;
 import com.hpe.kevin.business.entities.TMGlobalMatch;
 import com.hpe.kevin.business.entities.TMMatchCategory;
 import com.hpe.kevin.business.entities.TMMatchCountry;
-import com.hpe.kevin.business.entities.TMMatchSeason;
 import com.hpe.kevin.business.entities.TMMatchTeam;
-import com.hpe.kevin.business.entities.TOrder;
 import com.hpe.kevin.business.entities.TOrderDetail;
-import com.hpe.kevin.business.entities.TUser;
 import com.hpe.kevin.business.services.MasterDataService;
 
 @Controller
@@ -116,34 +116,8 @@ public class OrderMngController {
 //        if (bindingResult.hasErrors()) {
 //            return "ordermng";
 //        }
-        masterDataService.saveOrder(copyOrderInfo(betOrder));
+        masterDataService.saveOrder(betOrder);
         model.clear();
 		return "redirect:/order";
-	}
-	
-	private TOrder copyOrderInfo(BetOrder betOrder) {
-		TOrder order = new TOrder();
-		
-		// 投注本金
-		order.setOrderPrpl(betOrder.getOrderPrpl());
-		// 过关方式 (X串Y)
-		order.setBetTgtMatches(betOrder.getBetTgtMatches());
-		// 预计返奖
-		order.setEstmBonus(betOrder.getEstmBonus());
-		// 中奖
-		order.setIsWin(betOrder.getIsWin()?"1":"0");
-		// 结算济
-		order.setIsClosed(betOrder.getIsClosed()?"1":"0");
-		// 手动结算济
-		order.setIsClosedManually(betOrder.getIsClosedManually()?"1":"0");
-		
-		order.setTUser(new TUser(1, "hpmomocha"));
-		for (TOrderDetail orderDetail: betOrder.getOrderDetailList()) {
-			orderDetail.setTMMatchSeason(orderDetail.getTMBetTgtMatch().getTMMatchSeason());
-			order.getOrderDetails().add(orderDetail);
-		}
-		order.setOrderDate(betOrder.getOrderDate());
-		
-		return order;
 	}
 }

@@ -1,8 +1,8 @@
 CREATE TABLE `t_order` (
   `order_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '投注单ID',
-  `order_prpl` double DEFAULT NULL COMMENT '本金',
-  `bet_tgt_matches` varchar(45) DEFAULT NULL COMMENT '投注对象比赛场次',
-  `estm_bonus` double DEFAULT NULL COMMENT '预计奖金',
+  `order_prpl` double NOT NULL COMMENT '本金',
+  `bet_tgt_matches` varchar(45) NOT NULL COMMENT '投注对象比赛场次',
+  `estm_bonus` double NOT NULL COMMENT '预计奖金',
   `is_win` varchar(1) DEFAULT NULL COMMENT '是否中奖',
   `is_closed` varchar(1) DEFAULT NULL COMMENT '是否结算完成',
   `is_closed_manually` varchar(1) DEFAULT NULL COMMENT '是否手动完成结算',

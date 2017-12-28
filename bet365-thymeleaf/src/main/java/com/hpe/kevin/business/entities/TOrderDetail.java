@@ -69,6 +69,10 @@ public class TOrderDetail implements java.io.Serializable {
 	// 赛事类型
 	private TMMatchCountry matchCountry;
 	
+	@Transient
+	// 页面上表示用[结算济Checkbox]
+	private Boolean isClosedCheckbox;
+	
 	
 	public TOrderDetail() {
 	}
@@ -162,6 +166,16 @@ public class TOrderDetail implements java.io.Serializable {
 
 	public void setTOrder(TOrder tOrder) {
 		this.tOrder = tOrder;
+	}
+
+
+	public Boolean getIsClosedCheckbox() {
+		return isClosedCheckbox;
+	}
+
+
+	public void setIsClosedCheckbox(Boolean isClosedCheckbox) {
+		this.isClosedCheckbox = isClosedCheckbox;
 	}
 
 }
