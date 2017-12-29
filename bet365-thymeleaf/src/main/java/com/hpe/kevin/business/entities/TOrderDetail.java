@@ -161,6 +161,7 @@ public class TOrderDetail implements java.io.Serializable {
 	}
 
 	public TOrder getTOrder() {
+		
 		return tOrder;
 	}
 
@@ -177,5 +178,4 @@ public class TOrderDetail implements java.io.Serializable {
 	public void setIsClosedCheckbox(Boolean isClosedCheckbox) {
 		this.isClosedCheckbox = isClosedCheckbox;
 	}
-
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.hpe.kevin.business.entities.BetOrder;
+import com.hpe.kevin.business.entities.OrderSearchCondition;
 import com.hpe.kevin.business.entities.TMBetTgtMatch;
 import com.hpe.kevin.business.entities.TMEarlyStageBetType;
 import com.hpe.kevin.business.entities.TMGlobalMatch;
@@ -29,4 +30,6 @@ public interface MasterDataService {
 	public void saveOrder(BetOrder betOrder);
 	
 	public List<TMMatchCountry> getMatchCountryByGlobalMatchId(TMGlobalMatch globalMatch);
+	
+	public List<BetOrder> searchOrder(OrderSearchCondition condition);
 }

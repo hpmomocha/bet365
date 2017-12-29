@@ -103,3 +103,13 @@ ul.errorlist li {
     padding: 5px;
     margin: 3px 0px;
 }
+
+div.orderlist {
+    
+}
+
+div.orderlist > table {
+  width: 100%;
+  border: 1px solid #000;
+  border-collapse: collapse;
+}

@@ -97,7 +97,7 @@ function sendAjaxRequest(obj) {
 							<tr th:each="row,rowStat : *{orderDetailList}">
 								<td th:text="${rowStat.count}">1</td>
 								<td><select
-									th:field="*{orderDetailList[__${rowStat.index}__].globalMatch}" onchange='changeGlobalMatch(this)'>
+									th:field="*{orderDetailList[__${rowStat.index}__].globalMatch}" >
 										<option th:each="var : ${allGlobalMatch}" th:value="${var.id}"
 											th:text="${var.gblMatchName}">全球赛事</option>
 								</select></td>

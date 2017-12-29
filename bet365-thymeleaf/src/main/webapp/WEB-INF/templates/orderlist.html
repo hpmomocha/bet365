@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>投注单一览</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all" href="../../css/bet365.css" th:href="@{/css/bet365.css}" />
+</head>
+<body>
+	<div class="orderlist" th:unless="${#lists.isEmpty(allOrders)}">
+		<h2>投注一览111</h2>
+		<table>
+			<tr th:each="order : ${allOrders}">
+				<td>投注日期：</td>
+				<td th:text="${{order.orderDate}}">2017/12/29</td>
+				<td>过关方式：</td>
+				<td th:text="${{order.betTgtMatches}}">2串1</td>
+				<td>投注本金：</td>
+				<td th:text="${{order.orderPrpl}}">100.00</td>
+				<td>RMB</td>
+				<td>预计返回：</td>
+				<td th:text="${{order.estmBonus}}">100.00</td>
+				<td>RMB</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

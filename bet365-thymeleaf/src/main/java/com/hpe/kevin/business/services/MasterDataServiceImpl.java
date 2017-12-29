@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hpe.kevin.business.entities.BetOrder;
+import com.hpe.kevin.business.entities.OrderSearchCondition;
 import com.hpe.kevin.business.entities.TMBetTgtMatch;
 import com.hpe.kevin.business.entities.TMEarlyStageBetType;
 import com.hpe.kevin.business.entities.TMGlobalMatch;
@@ -27,6 +29,7 @@ import com.hpe.kevin.business.entities.repositories.GlobalMatchRepository;
 import com.hpe.kevin.business.entities.repositories.MatchCategoryRepository;
 import com.hpe.kevin.business.entities.repositories.MatchCountryRepository;
 import com.hpe.kevin.business.entities.repositories.MatchTeamRepository;
+import com.hpe.kevin.business.entities.repositories.OrderDetailRepository;
 import com.hpe.kevin.business.entities.repositories.OrderRepository;
 
 @Service
@@ -51,6 +54,9 @@ public class MasterDataServiceImpl implements MasterDataService {
 	
 	@Autowired
 	OrderRepository orderRepository;
+	
+	@Autowired
+	OrderDetailRepository orderDetailRepository;
 
 	@Override
 	public List<TMGlobalMatch> getAllGlobalMatch() {
@@ -127,5 +133,20 @@ public class MasterDataServiceImpl implements MasterDataService {
 	
 	public List<TMMatchCountry> getMatchCountryByGlobalMatchId(TMGlobalMatch globalMatch) {
 		return matchCountryRepository.findByTMGlobalMatch(globalMatch);
+	}
+	
+	public List<BetOrder> searchOrder(OrderSearchCondition condition) {
+		List<TOrder> orderList = orderRepository.findAll();
+		List<BetOrder> betOrderList = new ArrayList<BetOrder>();
+		for (TOrder order : orderList) {
+			BetOrder betOrder = new BetOrder();
+			betOrder.getOrderDetailList().addAll((order.getOrderDetails()));
+			betOrder.setOrderDate(order.getOrderDate().toString());
+			betOrder.setBetTgtMatches(order.getBetTgtMatches());
+			betOrder.setOrderPrpl(order.getOrderPrpl());
+			betOrder.setEstmBonus(order.getEstmBonus());
+			betOrderList.add(betOrder);
+		}
+		return betOrderList;
 	}
 }

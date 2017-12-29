@@ -8,6 +8,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -58,7 +59,7 @@ public class TOrder implements java.io.Serializable {
 	@JoinColumn(name="user_id")
 	private TUser tUser;
 	
-	@OneToMany(mappedBy="tOrder", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="tOrder", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	// mappedBy indicates the entity is the inverse of the relationship.
 	private Set<TOrderDetail> orderDetails = new HashSet<TOrderDetail>();
 
@@ -144,4 +145,19 @@ public class TOrder implements java.io.Serializable {
 	public void setTUser(TUser tUser) {
 		this.tUser = tUser;
 	}
+	
+    @Override
+    public String toString() {
+        String result = String.format(
+                "Order[id=%d]%n", orderId);
+        if (orderDetails != null) {
+            for(TOrderDetail orderDetail : orderDetails) {
+                result += String.format(
+                        "OrderDetail[id=%d]%n",
+                        orderDetail.getOrderDetailId());
+            }
+        }
+
+        return result;
+    }
 }
