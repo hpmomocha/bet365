@@ -5,27 +5,81 @@
 <head>
 <title th:text="#{lable.order.mng.title}">投注单管理</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<!--   <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>  -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" media="all"
-	href="../../css/bet365.css" th:href="@{/css/bet365.css}" />
+<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  -->
+<link rel="stylesheet" type="text/css" media="all" href="../../css/bet365.css" th:href="@{/css/bet365.css}" />
 <script type="text/javascript">
 function changeGlobalMatch(obj) {
-	sendAjaxRequest(obj);
-}
-
-function sendAjaxRequest(obj) {
 	var ajaxData = {
-    		name : obj.value
+    		"id" : obj.value
     	}
     $.ajax({
         type:"POST",
-        contentType:"application/json",
+        contentType: "application/json; charset=utf-8",
         url:window.location + "/getMatchCountry",
         data:JSON.stringify(ajaxData),
         dateType:"json",
         success: function (data) {
-            alert("success");
+        	var globalMatchSelectName = obj.name;
+        	var rowNo = globalMatchSelectName.substr(globalMatchSelectName.indexOf("[") + 1, 1);
+        	var matchCountrySelectId = "orderDetailList" + rowNo + "\\.matchCountry";      	
+        	$("#" + matchCountrySelectId).empty();
+        	$("#" + matchCountrySelectId).append("<option value='-9999'>请选择 </option>");
+        	for (var i = 0; i < data.length; i++) {
+        		$("#" + matchCountrySelectId).append("<option value='" + data[i].matchCyId + "'>" + data[i].matchCyName + "</option>");
+        	}
+        },
+        error: function (e) {
+        	alert("error");
+        }
+    });
+}
+
+function changeMatchCountry(obj) {
+	var ajaxData = {
+    		"matchCyId" : obj.value
+    	}
+    $.ajax({
+        type:"POST",
+        contentType: "application/json; charset=utf-8",
+        url:window.location + "/getBetTgtMatch",
+        data:JSON.stringify(ajaxData),
+        dateType:"json",
+        success: function (data) {
+        	var matchCountrySelectName = obj.name;
+        	var rowNo = matchCountrySelectName.substr(matchCountrySelectName.indexOf("[") + 1, 1);
+        	var betTgtMatchSelectId = "orderDetailList" + rowNo + "\\.tMBetTgtMatch";      	
+        	$("#" + betTgtMatchSelectId).empty();
+        	$("#" + betTgtMatchSelectId).append("<option value='-9999'>请选择 </option>");
+        	for (var i = 0; i < data.length; i++) {
+        		$("#" + betTgtMatchSelectId).append("<option value='" + data[i].matchId + "'>" + data[i].matchShortName + "</option>");
+        	}
+        },
+        error: function (e) {
+        	alert("error");
+        }
+    });
+}
+
+function changeBetTgtMatch(obj) {
+	var ajaxData = {
+    		"matchId" : obj.value
+    	}
+    $.ajax({
+        type:"POST",
+        contentType: "application/json; charset=utf-8",
+        url:window.location + "/getMatchTeam",
+        data:JSON.stringify(ajaxData),
+        dateType:"json",
+        success: function (data) {
+        	var matchTeamSelectName = obj.name;
+        	var rowNo = matchTeamSelectName.substr(matchTeamSelectName.indexOf("[") + 1, 1);
+        	var matchTeamSelectId = "orderDetailList" + rowNo + "\\.tMMatchTeam";      	
+        	$("#" + matchTeamSelectId).empty();
+        	$("#" + matchTeamSelectId).append("<option value='-9999'>请选择 </option>");
+        	for (var i = 0; i < data.length; i++) {
+        		$("#" + matchTeamSelectId).append("<option value='" + data[i].teamId + "'>" + data[i].teamName + "</option>");
+        	}
         },
         error: function (e) {
         	alert("error");
@@ -97,7 +151,7 @@ function sendAjaxRequest(obj) {
 							<tr th:each="row,rowStat : *{orderDetailList}">
 								<td th:text="${rowStat.count}">1</td>
 								<td><select
-									th:field="*{orderDetailList[__${rowStat.index}__].globalMatch}" >
+									th:field="*{orderDetailList[__${rowStat.index}__].globalMatch}" onchange="javascript:changeGlobalMatch(this)">
 										<option th:each="var : ${allGlobalMatch}" th:value="${var.id}"
 											th:text="${var.gblMatchName}">全球赛事</option>
 								</select></td>
@@ -108,12 +162,12 @@ function sendAjaxRequest(obj) {
 											th:text="${var.matchCategoryName}">赛事类型</option>
 								</select></td> -->
 								<td><select
-									th:field="*{orderDetailList[__${rowStat.index}__].matchCountry}">
+									th:field="*{orderDetailList[__${rowStat.index}__].matchCountry}" onchange="javascript:changeMatchCountry(this)">
 										<option th:each="var : ${allMatchCountry}"
 											th:value="${var.matchCyId}" th:text="${var.matchCyName}">赛事所属国/组织</option>
 								</select></td>
 								<td><select
-									th:field="*{orderDetailList[__${rowStat.index}__].tMBetTgtMatch}">
+									th:field="*{orderDetailList[__${rowStat.index}__].tMBetTgtMatch}" onchange="javascript:changeBetTgtMatch(this)">
 										<option th:each="var : ${allBetTargetMatch}"
 											th:value="${var.matchId}" th:text="${var.matchShortName}">赛事名称</option>
 								</select></td>

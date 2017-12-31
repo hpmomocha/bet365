@@ -37,6 +37,12 @@ public class TMMatchCountry implements java.io.Serializable {
 	public TMMatchCountry() {
 	}
 
+	public TMMatchCountry(int matchCyId, String matchCyName) {
+		super();
+		this.matchCyId = matchCyId;
+		this.matchCyName = matchCyName;
+	}
+
 	public TMMatchCountry(int matchCyId, TMGlobalMatch tMGlobalMatch, String matchCyName, int cyShowOrder) {
 		this.matchCyId = matchCyId;
 		this.tMGlobalMatch = tMGlobalMatch;

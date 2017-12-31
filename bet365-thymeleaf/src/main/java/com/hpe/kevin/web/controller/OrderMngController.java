@@ -3,6 +3,7 @@ package com.hpe.kevin.web.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,8 +37,14 @@ public class OrderMngController {
      * @return
      */
     @ModelAttribute("allGlobalMatch")
-    public List<TMGlobalMatch> populateGlobalMatch() {
-    	List<TMGlobalMatch> result = masterDataService.getAllGlobalMatch();
+    public List<TMGlobalMatch> populateGlobalMatch(HttpSession httpSession) {
+    	List<TMGlobalMatch> result = null;
+    	if (httpSession.getAttribute("allGlobalMatch") == null) {
+    		result = masterDataService.getAllGlobalMatch();
+    		httpSession.setAttribute("allGlobalMatch", result);
+    	} else {
+    		result = (List<TMGlobalMatch>) httpSession.getAttribute("allGlobalMatch");
+    	}
         return result;
     }
     
@@ -46,8 +53,14 @@ public class OrderMngController {
      * @return
      */
     @ModelAttribute("allMatchCountry")
-    public List<TMMatchCountry> populateMatchCountry() {
-    	List<TMMatchCountry> result = masterDataService.getAllMatchCountry();
+    public List<TMMatchCountry> populateMatchCountry(HttpSession httpSession) {
+    	List<TMMatchCountry> result = null;
+    	if (httpSession.getAttribute("allMatchCountry") == null) {
+    		result = masterDataService.getAllMatchCountry();
+    		httpSession.setAttribute("allMatchCountry", result);
+    	} else {
+    		result = (List<TMMatchCountry>) httpSession.getAttribute("allMatchCountry");
+    	}
         return result;
     }
     

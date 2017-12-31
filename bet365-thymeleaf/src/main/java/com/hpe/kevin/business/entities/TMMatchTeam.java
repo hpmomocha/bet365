@@ -26,11 +26,11 @@ public class TMMatchTeam implements java.io.Serializable {
 	
 	@OneToOne
 	@JoinColumn(name = "match_id", insertable = false, updatable = false)
-	private TMBetTgtMatch TMBetTgtMatch;
+	private TMBetTgtMatch tMBetTgtMatch;
 	
 	@OneToOne
 	@JoinColumn(name = "match_ssn_id")
-	private TMMatchSeason TMMatchSeason;
+	private TMMatchSeason tMMatchSeason;
 	
 	@Column(name = "team_name")
 	private String teamName;
@@ -55,11 +55,11 @@ public class TMMatchTeam implements java.io.Serializable {
 		this.teamId = teamId;
 	}
 
-	public TMMatchTeam(int teamId, TMBetTgtMatch TMBetTgtMatch, TMMatchSeason TMMatchSeason, String teamName,
+	public TMMatchTeam(int teamId, TMBetTgtMatch tMBetTgtMatch, TMMatchSeason tMMatchSeason, String teamName,
 			String teamShortName, String matchGroup, String knktMatchRival, String teamStanding) {
 		this.teamId = teamId;
-		this.TMBetTgtMatch = TMBetTgtMatch;
-		this.TMMatchSeason = TMMatchSeason;
+		this.tMBetTgtMatch = tMBetTgtMatch;
+		this.tMMatchSeason = tMMatchSeason;
 		this.teamName = teamName;
 		this.teamShortName = teamShortName;
 		this.matchGroup = matchGroup;
@@ -68,19 +68,19 @@ public class TMMatchTeam implements java.io.Serializable {
 	}
 
 	public TMBetTgtMatch getTMBetTgtMatch() {
-		return this.TMBetTgtMatch;
+		return this.tMBetTgtMatch;
 	}
 
-	public void setTMBetTgtMatch(TMBetTgtMatch TMBetTgtMatch) {
-		this.TMBetTgtMatch = TMBetTgtMatch;
+	public void setTMBetTgtMatch(TMBetTgtMatch tMBetTgtMatch) {
+		this.tMBetTgtMatch = tMBetTgtMatch;
 	}
 
 	public TMMatchSeason getTMMatchSeason() {
-		return this.TMMatchSeason;
+		return this.tMMatchSeason;
 	}
 
-	public void setTMMatchSeason(TMMatchSeason TMMatchSeason) {
-		this.TMMatchSeason = TMMatchSeason;
+	public void setTMMatchSeason(TMMatchSeason tMMatchSeason) {
+		this.tMMatchSeason = tMMatchSeason;
 	}
 
 	public String getTeamName() {

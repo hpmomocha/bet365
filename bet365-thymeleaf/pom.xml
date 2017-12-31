@@ -28,17 +28,17 @@
 			<artifactId>spring-core</artifactId>
 			<version>${org.springframework.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework.version}</version>
 		</dependency>
-		
+
 		<dependency>
-		    <groupId>org.springframework.data</groupId>
-		    <artifactId>spring-data-jpa</artifactId>
-		    <version>2.0.2.RELEASE</version>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>2.0.2.RELEASE</version>
 		</dependency>
 
 		<dependency>
@@ -47,12 +47,12 @@
 			<version>${thymeleaf.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<dependency>
-		    <groupId>mysql</groupId>
-		    <artifactId>mysql-connector-java</artifactId>
-		    <version>6.0.6</version>
-		    <scope>runtime</scope>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>6.0.6</version>
+			<scope>runtime</scope>
 		</dependency>
 
 		<!-- hibernate -->
@@ -69,25 +69,37 @@
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${org.slf4j.version}</version>
 			<scope>runtime</scope>
- 		</dependency>
+		</dependency>
 
- 		<dependency>
- 			<groupId>log4j</groupId>
- 			<artifactId>log4j</artifactId>
- 			<version>${log4j.version}</version>
- 			<scope>runtime</scope>
- 		</dependency>
- 		
-		<dependency>  
-		    <groupId>org.webjars</groupId>  
-		    <artifactId>jquery</artifactId>  
-		    <version>3.1.1</version>  
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>3.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.9.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.3</version>
 		</dependency>
 
 		<!-- Test -->
@@ -146,10 +158,13 @@
 					<port>9999</port>
 					<path>/${project.artifactId}</path>
 					<uriEncoding>UTF-8</uriEncoding>
-					 <systemProperties>
-					 	<JAVA_OPTS>-Xms256m -Xmx1024m -XX:+DisableExplicitGC -Dcom.sun.management.jmxremote -XX:PermSize=256m -XX:MaxPermSize=512m</JAVA_OPTS>
-					 	<MAVEN_OPTS>-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=9999</MAVEN_OPTS>
-					 </systemProperties>
+					<systemProperties>
+						<JAVA_OPTS>-Xms256m -Xmx1024m -XX:+DisableExplicitGC
+							-Dcom.sun.management.jmxremote -XX:PermSize=256m
+							-XX:MaxPermSize=512m</JAVA_OPTS>
+						<MAVEN_OPTS>-Xdebug -Xnoagent -Djava.compiler=NONE
+							-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=9999</MAVEN_OPTS>
+					</systemProperties>
 				</configuration>
 			</plugin>
 

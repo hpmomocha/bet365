@@ -31,5 +31,9 @@ public interface MasterDataService {
 	
 	public List<TMMatchCountry> getMatchCountryByGlobalMatchId(TMGlobalMatch globalMatch);
 	
+	public List<TMBetTgtMatch> getBetTgtMatchByMatchCountryId(TMMatchCountry matchCountry);
+	
+	public List<TMMatchTeam> getMatchTeamByMatchId(TMBetTgtMatch betTgtMatch);
+	
 	public List<BetOrder> searchOrder(OrderSearchCondition condition);
 }

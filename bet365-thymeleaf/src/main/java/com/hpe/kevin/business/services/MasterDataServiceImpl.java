@@ -135,6 +135,14 @@ public class MasterDataServiceImpl implements MasterDataService {
 		return matchCountryRepository.findByTMGlobalMatch(globalMatch);
 	}
 	
+	public List<TMBetTgtMatch> getBetTgtMatchByMatchCountryId(TMMatchCountry matchCountry) {
+		return betTgtMatchRepository.findByTMMatchCountry(matchCountry);
+	}
+	
+	public List<TMMatchTeam> getMatchTeamByMatchId(TMBetTgtMatch betTgtMatch) {
+		return matchTeamRepository.findByTMBetTgtMatch(betTgtMatch);
+	}
+	
 	public List<BetOrder> searchOrder(OrderSearchCondition condition) {
 		List<TOrder> orderList = orderRepository.findAll();
 		List<BetOrder> betOrderList = new ArrayList<BetOrder>();
