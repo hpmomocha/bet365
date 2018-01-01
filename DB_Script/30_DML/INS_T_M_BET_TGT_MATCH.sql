@@ -5,10 +5,10 @@ INSERT INTO `bet365`.`t_m_bet_tgt_match`(`match_id`, `match_name`, `match_short_
 INSERT INTO `bet365`.`t_m_bet_tgt_match`(`match_id`, `match_name`, `match_short_name`, `match_belongs_in_cy_id`, `match_ssn_id`, `match_category`) VALUES(20, '西班牙甲级联赛', '西甲', 2, 1, 1);
 INSERT INTO `bet365`.`t_m_bet_tgt_match`(`match_id`, `match_name`, `match_short_name`, `match_belongs_in_cy_id`, `match_ssn_id`, `match_category`) VALUES(40, '意大利甲级联赛', '意甲', 3, 1, 1);
 INSERT INTO `bet365`.`t_m_bet_tgt_match`(`match_id`, `match_name`, `match_short_name`, `match_belongs_in_cy_id`, `match_ssn_id`, `match_category`) VALUES(41, '意大利乙级联赛', '意乙', 3, 1, 1);
-INSERT INTO `bet365`.`t_m_bet_tgt_match`(`match_id`, `match_name`, `match_short_name`, `match_belongs_in_cy_id`, `match_ssn_id`, `match_category`) VALUES(60, '德国甲级联赛', '意甲', 4, 1, 1);
-INSERT INTO `bet365`.`t_m_bet_tgt_match`(`match_id`, `match_name`, `match_short_name`, `match_belongs_in_cy_id`, `match_ssn_id`, `match_category`) VALUES(61, '德国乙级联赛', '意乙', 4, 1, 1);
-INSERT INTO `bet365`.`t_m_bet_tgt_match`(`match_id`, `match_name`, `match_short_name`, `match_belongs_in_cy_id`, `match_ssn_id`, `match_category`) VALUES(80, '法国甲级联赛', '意甲', 5, 1, 1);
-INSERT INTO `bet365`.`t_m_bet_tgt_match`(`match_id`, `match_name`, `match_short_name`, `match_belongs_in_cy_id`, `match_ssn_id`, `match_category`) VALUES(81, '法国乙级联赛', '意乙', 5, 1, 1);
+INSERT INTO `bet365`.`t_m_bet_tgt_match`(`match_id`, `match_name`, `match_short_name`, `match_belongs_in_cy_id`, `match_ssn_id`, `match_category`) VALUES(60, '德国甲级联赛', '德甲', 4, 1, 1);
+INSERT INTO `bet365`.`t_m_bet_tgt_match`(`match_id`, `match_name`, `match_short_name`, `match_belongs_in_cy_id`, `match_ssn_id`, `match_category`) VALUES(61, '德国乙级联赛', '德乙', 4, 1, 1);
+INSERT INTO `bet365`.`t_m_bet_tgt_match`(`match_id`, `match_name`, `match_short_name`, `match_belongs_in_cy_id`, `match_ssn_id`, `match_category`) VALUES(80, '法国甲级联赛', '法甲', 5, 1, 1);
+INSERT INTO `bet365`.`t_m_bet_tgt_match`(`match_id`, `match_name`, `match_short_name`, `match_belongs_in_cy_id`, `match_ssn_id`, `match_category`) VALUES(81, '法国乙级联赛', '法乙', 5, 1, 1);
 INSERT INTO `bet365`.`t_m_bet_tgt_match`(`match_id`, `match_name`, `match_short_name`, `match_belongs_in_cy_id`, `match_ssn_id`, `match_category`) VALUES(100, '比利时甲级联赛', '比甲', 6, 1, 1);
 INSERT INTO `bet365`.`t_m_bet_tgt_match`(`match_id`, `match_name`, `match_short_name`, `match_belongs_in_cy_id`, `match_ssn_id`, `match_category`) VALUES(110, '丹麦超级联赛', '丹超', 7, 1, 1);
 INSERT INTO `bet365`.`t_m_bet_tgt_match`(`match_id`, `match_name`, `match_short_name`, `match_belongs_in_cy_id`, `match_ssn_id`, `match_category`) VALUES(120, '俄罗斯超级联赛', '俄超', 8, 1, 1);

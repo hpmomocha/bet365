@@ -1,7 +1,6 @@
 package com.hpe.kevin.business.entities;
 // Generated 2017/12/20 14:07:38 by Hibernate Tools 5.2.3.Final
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -53,7 +52,7 @@ public class TOrder implements java.io.Serializable {
 	private String isClosedManually;
 	
 	@Column(name = "order_date")
-	private Date orderDate;
+	private String orderDate;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")
@@ -122,11 +121,11 @@ public class TOrder implements java.io.Serializable {
 		this.isClosedManually = isClosedManually;
 	}
 
-	public Date getOrderDate() {
+	public String getOrderDate() {
 		return this.orderDate;
 	}
 
-	public void setOrderDate(Date orderDate) {
+	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
 

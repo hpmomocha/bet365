@@ -32,19 +32,16 @@ public class OrderMngController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(OrderMngController.class);
 	
+	private static final String OPTION_PLEASE_SELECT = "请选择";
+	
     /**
      * 取得所有赛事区域
      * @return
      */
     @ModelAttribute("allGlobalMatch")
-    public List<TMGlobalMatch> populateGlobalMatch(HttpSession httpSession) {
-    	List<TMGlobalMatch> result = null;
-    	if (httpSession.getAttribute("allGlobalMatch") == null) {
-    		result = masterDataService.getAllGlobalMatch();
-    		httpSession.setAttribute("allGlobalMatch", result);
-    	} else {
-    		result = (List<TMGlobalMatch>) httpSession.getAttribute("allGlobalMatch");
-    	}
+    public List<TMGlobalMatch> populateGlobalMatch() {
+    	List<TMGlobalMatch> result = masterDataService.getAllGlobalMatch();
+    	result.add(0, new TMGlobalMatch(0, OPTION_PLEASE_SELECT));
         return result;
     }
     
@@ -53,14 +50,9 @@ public class OrderMngController {
      * @return
      */
     @ModelAttribute("allMatchCountry")
-    public List<TMMatchCountry> populateMatchCountry(HttpSession httpSession) {
-    	List<TMMatchCountry> result = null;
-    	if (httpSession.getAttribute("allMatchCountry") == null) {
-    		result = masterDataService.getAllMatchCountry();
-    		httpSession.setAttribute("allMatchCountry", result);
-    	} else {
-    		result = (List<TMMatchCountry>) httpSession.getAttribute("allMatchCountry");
-    	}
+    public List<TMMatchCountry> populateMatchCountry() {
+    	List<TMMatchCountry> result = masterDataService.getAllMatchCountry();
+    	result.add(0, new TMMatchCountry(0, OPTION_PLEASE_SELECT));
         return result;
     }
     
@@ -71,6 +63,7 @@ public class OrderMngController {
     @ModelAttribute("allBetTargetMatch")
     public List<TMBetTgtMatch> populateBetTargetMatch() {
     	List<TMBetTgtMatch> result = masterDataService.getAllBetTgtMatch();
+    	result.add(0, new TMBetTgtMatch(0, OPTION_PLEASE_SELECT));
         return result;
     }
     
@@ -81,6 +74,7 @@ public class OrderMngController {
     @ModelAttribute("allEarlyStageBetType")
     public List<TMEarlyStageBetType> populateEarlyStageBetType() {
     	List<TMEarlyStageBetType> result = masterDataService.getAllEarlyStageBetType();
+    	result.add(0, new TMEarlyStageBetType(0, OPTION_PLEASE_SELECT));
         return result;
     }
     
@@ -101,6 +95,7 @@ public class OrderMngController {
     @ModelAttribute("allMatchTeam")
     public List<TMMatchTeam> populateMatchTeam() {
     	List<TMMatchTeam> result = masterDataService.getAllMatchTeam();
+    	result.add(0, new TMMatchTeam(0, OPTION_PLEASE_SELECT));
         return result;
     }
     

@@ -51,6 +51,9 @@ public class TOrderDetail implements java.io.Serializable {
 	@Column(name = "is_closed")
 	private String isClosed;
 	
+	@Column(name = "is_win")
+	private String isWin;
+	
 	@ManyToOne
 	@JoinColumn(name = "order_id")
 	// @JoinColumn indicates the entity is the owner of the relationship: 
@@ -71,7 +74,7 @@ public class TOrderDetail implements java.io.Serializable {
 	
 	@Transient
 	// 页面上表示用[结算济Checkbox]
-	private Boolean isClosedCheckbox;
+	private Boolean isClosedCheckbox = false;
 	
 	
 	public TOrderDetail() {
@@ -178,4 +181,15 @@ public class TOrderDetail implements java.io.Serializable {
 	public void setIsClosedCheckbox(Boolean isClosedCheckbox) {
 		this.isClosedCheckbox = isClosedCheckbox;
 	}
+
+
+	public String getIsWin() {
+		return isWin;
+	}
+
+
+	public void setIsWin(String isWin) {
+		this.isWin = isWin;
+	}
+	
 }

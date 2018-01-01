@@ -39,6 +39,10 @@ public class BetTgtMatchFormatter implements Formatter<TMBetTgtMatch> {
     }
 
     public TMBetTgtMatch parse(final String text, final Locale locale) throws ParseException {
+    	// 请选择的时候不需要parse
+    	if (text.equals("0")) {
+    		return new TMBetTgtMatch(0, "请选择");
+    	}
         final Integer matchId = Integer.valueOf(text);
         return masterDataService.findBetTgtMatchById(matchId).get();
     }

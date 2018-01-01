@@ -34,6 +34,12 @@ public class TMEarlyStageBetType implements java.io.Serializable {
 	public TMEarlyStageBetType() {
 	}
 
+	public TMEarlyStageBetType(int betTypeId, String betTypeName) {
+		super();
+		this.betTypeId = betTypeId;
+		this.betTypeName = betTypeName;
+	}
+
 	public TMEarlyStageBetType(int betTypeId, TMMatchCategory tMMatchCategory, String betTypeName) {
 		this.betTypeId = betTypeId;
 		this.tMMatchCategory = tMMatchCategory;

@@ -39,11 +39,11 @@ public class BetOrder implements java.io.Serializable{
 	// 投注单详情
 	private List<TOrderDetail> orderDetailList = new ArrayList<TOrderDetail>();
 	// 是否中奖
-	private Boolean isWin;
+	private Boolean isWin = false;
 	// 是否完成结算
-	private Boolean isClosed;
+	private Boolean isClosed = false;
 	// 是否手动完成结算
-	private Boolean isClosedManually;
+	private Boolean isClosedManually = false;
 	
 	public BetOrder() {
 		super();

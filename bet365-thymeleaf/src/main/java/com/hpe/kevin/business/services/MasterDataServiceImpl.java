@@ -1,11 +1,6 @@
 package com.hpe.kevin.business.services;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -116,15 +111,12 @@ public class MasterDataServiceImpl implements MasterDataService {
 		// 用户ID
 		order.setTUser(new TUser(1, "hpmomocha"));
 		// 投注日期
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        ZoneId zoneId = ZoneId.systemDefault();
-        LocalDate localDate = LocalDate.parse(betOrder.getOrderDate(), formatter);
-        ZonedDateTime zdt = localDate.atStartOfDay(zoneId);
-        order.setOrderDate(Date.from(zdt.toInstant()));
+        order.setOrderDate(betOrder.getOrderDate());
 
 		for (TOrderDetail orderDetail: betOrder.getOrderDetailList()) {
 			orderDetail.setTOrder(order);
 			orderDetail.setTMMatchSeason(orderDetail.getTMBetTgtMatch().getTMMatchSeason());
+			orderDetail.setIsClosed(orderDetail.getIsClosedCheckbox()?"1" : "0");
 			order.getOrderDetails().add(orderDetail);
 		}
 		

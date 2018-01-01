@@ -52,6 +52,12 @@ public class TMBetTgtMatch implements java.io.Serializable {
 		this.matchId = matchId;
 	}
 
+	public TMBetTgtMatch(int matchId, String matchShortName) {
+		super();
+		this.matchId = matchId;
+		this.matchShortName = matchShortName;
+	}
+
 	public TMBetTgtMatch(int matchId, TMMatchCategory tMMatchCategory, TMMatchCountry tMMatchCountry,
 			TMMatchSeason tMMatchSeason, String matchName, String matchShortName, String matchCrrtStage) {
 		this.matchId = matchId;
