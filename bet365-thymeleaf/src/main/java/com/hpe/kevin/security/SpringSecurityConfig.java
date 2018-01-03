@@ -28,7 +28,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/", "/home").permitAll()
+                .antMatchers("/", "/home", "/webjars/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
@@ -42,7 +42,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		//基于内存的用户存储
-		auth.inMemoryAuthentication().withUser("hpmomocha").password("hpmomocha").roles("USER").and()
+		auth.inMemoryAuthentication().passwordEncoder(new MyPasswordEncoder()).withUser("hpmomocha").password("hpmomocha").roles("USER").and()
 		.withUser("admin").password("admin").roles("USER", "ADMIN");
 	}
     
