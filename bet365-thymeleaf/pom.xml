@@ -21,6 +21,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<thymeleafspringsecurity4.version>3.0.2.RELEASE</thymeleafspringsecurity4.version>
 		<springsecurity.version>5.0.0.RELEASE</springsecurity.version>
+		<querydsl.version>4.1.4</querydsl.version>
 	</properties>
 
 	<dependencies>
@@ -125,7 +126,20 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>${springsecurity.version}</version>
 		</dependency>
-
+<!-- 
+		<dependency>
+		  <groupId>com.querydsl</groupId>
+		  <artifactId>querydsl-sql</artifactId>
+		  <version>${querydsl.version}</version>
+		</dependency>
+		
+		<dependency>
+		  <groupId>com.querydsl</groupId>
+		  <artifactId>querydsl-sql-codegen</artifactId>
+		  <version>${querydsl.version}</version>
+		  <scope>provided</scope>
+		</dependency>
+ -->
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -200,6 +214,7 @@
 					<mainClass>org.test.int1.Main</mainClass>
 				</configuration>
 			</plugin>
+
 		</plugins>
 	</build>
 </project>

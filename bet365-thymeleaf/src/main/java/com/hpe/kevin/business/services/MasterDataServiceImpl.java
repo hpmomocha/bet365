@@ -136,6 +136,9 @@ public class MasterDataServiceImpl implements MasterDataService {
 	}
 	
 	public List<BetOrder> searchOrder(OrderSearchCondition condition) {
+		TMEarlyStageBetType betType = new TMEarlyStageBetType(Integer.valueOf(condition.getBetTypeId()));
+		TMMatchTeam matchTeam = new TMMatchTeam(condition.getTeamName());
+		List<TOrderDetail> orderDetailList = orderDetailRepository.findByTMEarlyStageBetTypeAndTMMatchTeam(betType, matchTeam);
 		List<TOrder> orderList = orderRepository.findAll();
 		List<BetOrder> betOrderList = new ArrayList<BetOrder>();
 		for (TOrder order : orderList) {

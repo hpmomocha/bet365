@@ -3,7 +3,6 @@ package com.hpe.kevin.web.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hpe.kevin.business.entities.BetOrder;
+import com.hpe.kevin.business.entities.OrderSearchCondition;
 import com.hpe.kevin.business.entities.TMBetTgtMatch;
 import com.hpe.kevin.business.entities.TMEarlyStageBetType;
 import com.hpe.kevin.business.entities.TMGlobalMatch;
@@ -128,8 +128,15 @@ public class OrderMngController {
 	}
 	
 	@RequestMapping(value="/orderList")
-	public String searchOrder(Model model) {
-		model.addAttribute("allOrders", masterDataService.searchOrder(null));
+	public String orderList(final OrderSearchCondition condition, Model model) {
+//		model.addAttribute("allOrders", masterDataService.searchOrder(null));
+		
+		return "orderlist";
+	}
+	
+	@RequestMapping(value="/searchOrder")
+	public String searchOrder(final OrderSearchCondition condition, Model model) {
+		model.addAttribute("allOrders", masterDataService.searchOrder(condition));
 		
 		return "orderlist";
 	}

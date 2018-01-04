@@ -23,6 +23,27 @@ function showOrderDetail(img) {
 </script>
 </head>
 <body>
+	<h2>投注单检索</h2>
+	<form action="#" th:action="@{/searchOrder}"
+		th:object="${orderSearchCondition}" method="post">
+		<fieldset>
+			<legend>检索条件</legend>
+			<table style="width: 100%">
+				<tr>
+					<td style="width: 25%; background: #3CB371; color: white">投注类型：</td>
+					<td style="width: 25%; background: LightYellow;"><select
+						th:field="${orderSearchCondition.betTypeId}">
+							<option th:each="var : ${allEarlyStageBetType}"
+								th:value="${var.betTypeId}" th:text="${var.betTypeName}"></option>
+					</select></td>
+					<td style="width: 25%; background: #3CB371; color: white">投注球队名称：</td>
+					<td style="width: 25%; background: LightYellow;"><input
+						type="text" th:field="${orderSearchCondition.teamName}" /></td>
+				</tr>
+				<tr><td colspan="4"><BR/><button type="submit" name="search">检索</button></td></tr>
+			</table>
+		</fieldset>
+	</form>
 	<div class="orderlist" th:unless="${#lists.isEmpty(allOrders)}">
 		<h2>投注一览</h2>
 		<table>
@@ -32,30 +53,35 @@ function showOrderDetail(img) {
 					<table style="width: 100%">
 						<tr>
 							<td style="background: #3CB371; color: white">投注日期：</td>
-							<td style="background: LightYellow;" th:text="${{order.orderDate}}">2017/12/29</td>
+							<td style="background: LightYellow;"
+								th:text="${{order.orderDate}}">2017/12/29</td>
 							<td style="background: #3CB371; color: white">过关方式：</td>
-							<td style="background: LightYellow;" th:text="${{order.betTgtMatches}}">2串1</td>
-							<td style="background: LightYellow;" align="right"><button type="submit" name="editOrder"
-									th:value="${orderStat.index}">编辑投注</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td style="background: LightYellow;"
+								th:text="${{order.betTgtMatches}}">2串1</td>
+							<td style="background: LightYellow;" align="right"><button
+									type="submit" name="editOrder" th:value="${orderStat.index}">编辑投注</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 						</tr>
 						<tr>
 							<td style="background: #3CB371; color: white">投注本金：</td>
-							<td style="background: LightYellow;" th:text="${{order.orderPrpl}} + RMB">100.00 RMB</td>
+							<td style="background: LightYellow;"
+								th:text="${{order.orderPrpl}} + RMB">100.00 RMB</td>
 							<td style="background: #3CB371; color: white">预计返回：</td>
-							<td style="background: LightYellow;" th:text="${{order.estmBonus}} + RMB">100.00 RMB</td>
-							<td style="background: LightYellow;" align="right"><button type="submit" name="closeOrder"
-									th:value="${orderStat.index}">结束投注</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td style="background: LightYellow;"
+								th:text="${{order.estmBonus}} + RMB">100.00 RMB</td>
+							<td style="background: LightYellow;" align="right"><button
+									type="submit" name="closeOrder" th:value="${orderStat.index}">结束投注</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 						</tr>
 						<tr>
 							<td style="background: #3CB371; color: white" colspan="5">投注单详情&nbsp;&nbsp;<img
-								th:id="orderDetailImg + ${orderStat.index}"
-								align="top" alt="展开详细投注单" src="../../images/plus.png"
+								th:id="orderDetailImg + ${orderStat.index}" align="top"
+								alt="展开详细投注单" src="../../images/plus.png"
 								th:src="@{/images/plus.png}"
 								onclick="javascript:showOrderDetail(this);"></td>
 						</tr>
 						<tr style="background: gray">
 							<td colspan="5">
-								<div th:id="orderDetailDiv + ${orderStat.index}" style="display:none">
+								<div th:id="orderDetailDiv + ${orderStat.index}"
+									style="display: none">
 									<table style="width: 100%; color: white"
 										th:each="orderDetail : ${order.orderDetailList}">
 										<tr>
