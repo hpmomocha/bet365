@@ -2,16 +2,44 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>Home</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" type="text/css" media="all" href="../../css/bet365.css" th:href="@{/css/bet365.css}"/>
+<title>Home</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all"
+	href="../../css/bet365.css" th:href="@{/css/bet365.css}" />
 </head>
-<body>
-<h1>
-	Hello world!  
-</h1>
-
-<h1 th:text="${serverTime}">Hello World</h1>
+<body style="text-align:center;">
+	<div style="width:600px;height:600px;margin:auto;">
+		<table style="width:100%;">
+			<tr>
+				<td align="center">
+					<fieldset>
+						<legend>投注管理</legend>
+						<img src="../../images/soccer.png" th:src="@{/images/soccer.png}" />
+					</fieldset>
+				</td>
+				<td align="center">
+					<fieldset>
+						<legend>账户管理</legend>
+						<img src="../../images/account.png" th:src="@{/images/account.png}" />
+					</fieldset>
+				</td>
+			</tr>
+			<tr>
+				<td align="center">
+					<fieldset>
+						<legend>投注管理</legend>
+						<img src="../../images/soccer.png" th:src="@{/images/soccer.png}" />
+					</fieldset>
+				</td>
+				<td align="center">
+					<fieldset>
+						<legend>账户管理</legend>
+						<img src="../../images/account.png" th:src="@{/images/account.png}" />
+					</fieldset>
+				</td>
+			</tr>
+		</table>
+	</div>
 
 </body>
 </html>

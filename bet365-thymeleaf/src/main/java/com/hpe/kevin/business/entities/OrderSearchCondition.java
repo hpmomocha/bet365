@@ -26,6 +26,4 @@ public class OrderSearchCondition {
 	public void setTeamName(String teamName) {
 		this.teamName = teamName;
 	}
-	
-	
 }
