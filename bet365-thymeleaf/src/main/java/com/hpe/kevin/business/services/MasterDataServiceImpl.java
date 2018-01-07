@@ -14,6 +14,7 @@ import javax.persistence.criteria.Root;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.hpe.kevin.business.entities.BetOrder;
 import com.hpe.kevin.business.entities.OrderSearchCondition;
@@ -148,36 +149,31 @@ public class MasterDataServiceImpl implements MasterDataService {
 			
 			@Override
 			public Predicate toPredicate(Root<TOrder> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-				Predicate p1 = null;
-				Predicate p2 = null;
+				List<Predicate> list = new ArrayList<Predicate>();
 				
-				Join<TOrder, TOrderDetail> orderJoin = root.join("orderDetails", JoinType.LEFT);
-				if (condition.getBetTypeId() != null) {
+				if (condition.getBetTypeId() != null && !"0".equals(condition.getBetTypeId())) {
+					
 					TMEarlyStageBetType betType = new TMEarlyStageBetType();
 					betType.setBetTypeId(Integer.valueOf(condition.getBetTypeId()));
-					p1 = criteriaBuilder.equal(orderJoin.get("tMEarlyStageBetType"), betType);
-				}
-				if (condition.getTeamName() != null) {
-					TMMatchTeam matchTeam = new TMMatchTeam();
-					matchTeam.setTeamShortName(condition.getTeamName());
-					p2 = criteriaBuilder.equal(orderJoin.get("tMMatchTeam"), matchTeam);
+					Join<TOrderDetail, TOrder> orderDetailJoin = root.join("orderDetails", JoinType.LEFT);
+					list.add(criteriaBuilder.equal(orderDetailJoin.get("tMEarlyStageBetType"), betType));
 				}
 				
-				if (p1 != null) {
-					query = query.where(p1);
+				if (!StringUtils.isEmpty(condition.getTeamName())) {
+					TMMatchTeam matchTeam = new TMMatchTeam();
+					matchTeam.setTeamShortName(condition.getTeamName());
+					Join<TMMatchTeam, TOrder> matchTeamJoin = root.join("orderDetails", JoinType.LEFT);
+					list.add(criteriaBuilder.equal(matchTeamJoin.get("tMMatchTeam").get("teamShortName"), matchTeam.getTeamShortName()));
 				}
-				if (p2 != null) {
-					query = query.where(p2);
-				}
-				query.groupBy(orderJoin.get("tOrder"));
+				
+				Predicate[] p = new Predicate[list.size()];
+				query.where(criteriaBuilder.and(list.toArray(p)));
+				query.groupBy(root.get("orderId"));
+				
 				return null;
 			}
 		});
-		
-//		TMEarlyStageBetType betType = new TMEarlyStageBetType(Integer.valueOf(condition.getBetTypeId()));
-//		TMMatchTeam matchTeam = new TMMatchTeam(condition.getTeamName());
-//		List<TOrderDetail> orderDetailList = orderDetailRepository.findByTMEarlyStageBetTypeAndTMMatchTeam(betType, matchTeam);
-//		List<TOrder> orderList = orderRepository.findAll();
+
 		List<BetOrder> betOrderList = new ArrayList<BetOrder>();
 		for (TOrder order : orderList) {
 			BetOrder betOrder = new BetOrder();

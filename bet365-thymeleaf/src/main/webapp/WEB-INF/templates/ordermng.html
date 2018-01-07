@@ -5,10 +5,15 @@
 <head>
 <title th:text="#{lable.order.mng.title}">投注单管理</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="_csrf" th:content="${_csrf.token}" content=""/>
+<!-- default header name is X-CSRF-TOKEN -->
+<meta name="_csrf_header" th:content="${_csrf.headerName}" content=""/>
 <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  -->
 <link rel="stylesheet" type="text/css" media="all" href="../../css/bet365.css" th:href="@{/css/bet365.css}" />
 <script type="text/javascript">
+var token = $("meta[name='_csrf']").attr("content");
+var header = $("meta[name='_csrf_header']").attr("content");
 function changeGlobalMatch(obj) {
 	var ajaxData = {
     		"id" : obj.value
@@ -19,6 +24,9 @@ function changeGlobalMatch(obj) {
         url:window.location + "/getMatchCountry",
         data:JSON.stringify(ajaxData),
         dateType:"json",
+        beforeSend : function(xhr) {
+            xhr.setRequestHeader(header, token);
+        },
         success: function (data) {
         	var globalMatchSelectName = obj.name;
         	var rowNo = globalMatchSelectName.substr(globalMatchSelectName.indexOf("[") + 1, 1);
@@ -45,6 +53,9 @@ function changeMatchCountry(obj) {
         url:window.location + "/getBetTgtMatch",
         data:JSON.stringify(ajaxData),
         dateType:"json",
+        beforeSend : function(xhr) {
+            xhr.setRequestHeader(header, token);
+        },
         success: function (data) {
         	var matchCountrySelectName = obj.name;
         	var rowNo = matchCountrySelectName.substr(matchCountrySelectName.indexOf("[") + 1, 1);
@@ -71,6 +82,9 @@ function changeBetTgtMatch(obj) {
         url:window.location + "/getMatchTeam",
         data:JSON.stringify(ajaxData),
         dateType:"json",
+        beforeSend : function(xhr) {
+            xhr.setRequestHeader(header, token);
+        },
         success: function (data) {
         	var matchTeamSelectName = obj.name;
         	var rowNo = matchTeamSelectName.substr(matchTeamSelectName.indexOf("[") + 1, 1);
