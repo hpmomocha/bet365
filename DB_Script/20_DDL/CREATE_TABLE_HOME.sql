@@ -1,4 +1,5 @@
 source D:/work/github-repositories/bet365/DB_Script/01_TABLE/C_T_USER.sql;
+source D:/work/github-repositories/bet365/DB_Script/01_TABLE/C_T_USER_ROLE.sql;
 source D:/work/github-repositories/bet365/DB_Script/01_TABLE/C_T_M_GLOBAL_MATCH.sql;
 source D:/work/github-repositories/bet365/DB_Script/01_TABLE/C_T_M_MATCH_CATEGORY.sql;
 source D:/work/github-repositories/bet365/DB_Script/01_TABLE/C_T_M_EARLY_STAGE_BET_TYPE.sql;

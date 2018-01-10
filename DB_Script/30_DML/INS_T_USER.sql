@@ -1,1 +1,2 @@
-INSERT INTO `bet365`.`t_user`(`user_id`, `user_name`) VALUES(1, 'hpmomocha');
+INSERT INTO `bet365`.`t_user`(`user_id`, `user_name`, `password`, `enabled`) VALUES(1, 'hpmomocha', 'hpmomocha', true);
+INSERT INTO `bet365`.`t_user`(`user_id`, `user_name`, `password`, `enabled`) VALUES(2, 'fancywf', 'fancywf', true);

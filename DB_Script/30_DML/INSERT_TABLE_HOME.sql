@@ -1,4 +1,5 @@
 source D:/work/github-repositories/bet365/DB_Script/30_DML/INS_T_USER.sql;
+source D:/work/github-repositories/bet365/DB_Script/30_DML/INS_T_USER_ROLE.sql;
 source D:/work/github-repositories/bet365/DB_Script/30_DML/INS_T_M_MATCH_CATEGORY.sql;
 source D:/work/github-repositories/bet365/DB_Script/30_DML/INS_T_M_MATCH_SEASON.sql;
 source D:/work/github-repositories/bet365/DB_Script/30_DML/INS_T_M_GLOBAL_MATCH.sql;

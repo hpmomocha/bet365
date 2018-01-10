@@ -27,6 +27,12 @@ public class TUser implements Serializable {
 	@Column(name="user_name")
 	private String userName;
 	
+	@Column(name="password")
+	private String password;
+	
+	@Column(name="enabled")
+	private boolean enabled;
+	
 	@OneToMany(mappedBy="tUser", cascade = CascadeType.ALL)
 	// mappedBy indicates the entity is the inverse of the relationship.
 	private Set<TOrder> orders = new HashSet<TOrder>();
@@ -34,10 +40,25 @@ public class TUser implements Serializable {
 	public TUser() {
 	}
 
+	public TUser(int userId, String userName, String password) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.password = password;
+	}
+
 	public TUser(int userId, String userName) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	public int getUserId() {

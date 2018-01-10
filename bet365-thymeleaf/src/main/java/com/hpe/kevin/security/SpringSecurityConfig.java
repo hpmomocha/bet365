@@ -1,5 +1,8 @@
 package com.hpe.kevin.security;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,6 +14,9 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
+	@Autowired
+	DataSource dataSource;
+	
 	public SpringSecurityConfig() {
 		super();
 	}
@@ -48,8 +54,16 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		//基于内存的用户存储
-		auth.inMemoryAuthentication().passwordEncoder(new MyPasswordEncoder()).withUser("hpmomocha").password("hpmomocha").roles("USER").and()
-		.withUser("admin").password("admin").roles("USER", "ADMIN");
+//		auth.inMemoryAuthentication().passwordEncoder(new MyPasswordEncoder()).withUser("hpmomocha").password("hpmomocha").roles("USER").and()
+//		.withUser("admin").password("admin").roles("USER", "ADMIN");
+		
+//		auth.inMemoryAuthentication().passwordEncoder(new MyPasswordEncoder()).withUser("hpmomocha").password("hpmomocha").authorities("ROLE_USER").and()
+//		.withUser("admin").password("admin").authorities("ROLE_USER", "ROLE_ADMIN");
+		
+		// 基于数据库查询
+		auth.jdbcAuthentication().passwordEncoder(new MyPasswordEncoder()).dataSource(dataSource).
+		usersByUsernameQuery("select user_name, password,enabled from t_user where user_name=?").
+		authoritiesByUsernameQuery("select t1.user_name, t2.user_role from t_user t1, t_user_role t2 where t1.user_id = t2.user_id and t1.user_name=?");
 	}
     
     
